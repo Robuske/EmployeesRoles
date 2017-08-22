@@ -13,6 +13,12 @@ struct Role: Codable, Equatable {
 	let name: String
 	let salary: UInt
 	
+	init(name: String, salary: UInt) {
+		self.roleId = IdProvider.instance.newRoleId()
+		self.name = name
+		self.salary = salary
+	}
+	
 	static func == (lhs: Role, rhs: Role) -> Bool {
 		return lhs.roleId == rhs.roleId
 	}
