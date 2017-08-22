@@ -8,10 +8,14 @@
 
 import Foundation
 
-struct Role: Codable, Equatable {
+struct Role: Codable, Equatable, Hashable {
 	let roleId: UInt
-	let name: String
-	let salary: UInt
+	var name: String
+	var salary: UInt
+	
+	var hashValue: Int {
+		return Int(self.roleId)
+	}
 	
 	init(name: String, salary: UInt) {
 		self.roleId = IdProvider.instance.newRoleId()
