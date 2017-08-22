@@ -1,5 +1,5 @@
 //
-//  SecondViewController.swift
+//  EmployeeViewController.swift
 //  EmployeesRoles
 //
 //  Created by Rodrigo Cardoso Buske on 21/08/17.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SecondViewController: UIViewController {
+class EmployeeViewController: UIViewController {
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -22,4 +22,3 @@ class SecondViewController: UIViewController {
 
 
 }
-
