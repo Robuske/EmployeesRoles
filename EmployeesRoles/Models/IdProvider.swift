@@ -8,28 +8,34 @@
 
 import Foundation
 
-struct IdProvider: Codable, Equatable {
+class IdProvider: Codable {
 	
 	static let instance = IdProvider()
 	
-	private var nextEmployeeId: UInt = 0
+	private var nextCompanyId: UInt = 0
 	private var nextRoleId: UInt = 0
+	private var nextEmployeeId: UInt = 0
 	
-	mutating func newEmployeeId() -> UInt {
-		let old = self.nextEmployeeId
-		self.nextEmployeeId += 1
+	private init() {}
+	
+	func newCompanyId() -> UInt {
+		let old = self.nextCompanyId
+		self.nextCompanyId += 1
 		
 		return old
 	}
 	
-	mutating func newRoleId() -> UInt {
+	func newRoleId() -> UInt {
 		let old = self.nextRoleId
 		self.nextRoleId += 1
 		
 		return old
 	}
 	
-	static func == (lhs: IdProvider, rhs: IdProvider) -> Bool {
-		return lhs.nextEmployeeId == rhs.nextEmployeeId && lhs.nextRoleId == rhs.nextRoleId
+	func newEmployeeId() -> UInt {
+		let old = self.nextEmployeeId
+		self.nextEmployeeId += 1
+		
+		return old
 	}
 }
