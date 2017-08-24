@@ -8,9 +8,12 @@
 
 import UIKit
 
-class RoleViewController: UIViewController {
+class ChangeRoleViewController: UIViewController {
 
 	var role: Role?
+	
+	@IBOutlet private weak var roleTextField: UITextField!
+	@IBOutlet private weak var salaryTextField: UITextField!
 	
 	private var edit = false
 	
@@ -22,9 +25,11 @@ class RoleViewController: UIViewController {
 		super.viewDidAppear(animated)
 		
 		if self.role == nil {
-			self.edit = true
-		} else {
 			self.edit = false
+			self.navigationItem.title = NSLocalizedString("newRole", comment: "Title for the new role screen")
+		} else {
+			self.edit = true
+			self.navigationItem.title = NSLocalizedString("editRole", comment: "Title for the edit role screen")
 		}
 	}
 	
