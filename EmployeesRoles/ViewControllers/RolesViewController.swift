@@ -10,11 +10,29 @@ import UIKit
 
 class RolesViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
+	private let roleCellIdentifier = "roleCell"
+	private var roles: [Role]?
+	
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
     }
+	
+	override func viewDidAppear(_ animated: Bool) {
+		super.viewDidAppear(animated)
+		
+		if let oldCompany = DataLayer.instance.loadCompanies().first {
+			
+			self.roles = oldCompany.roles.sorted { $0.name > $1.name }
+			
+		} else {
+			let newCompany = Company(name: "Awesome Inc")
+			
+			let allCompanies = Set([newCompany])
+			_ = DataLayer.instance.save(allCompanies)
+			
+			self.roles = []
+		}
+	}
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -22,11 +40,18 @@ class RolesViewController: UIViewController, UITableViewDataSource, UITableViewD
     }
 	
 	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-		return 0
+		return self.roles?.count ?? 0
 	}
 	
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-		return UITableViewCell()
+		let cell = tableView.dequeueReusableCell(withIdentifier: self.roleCellIdentifier, for: indexPath)
+		
+		if let role = self.roles?[indexPath.row] {
+			cell.textLabel?.text = role.name
+			cell.detailTextLabel?.text = String(role.salary)
+		}
+		
+		return cell
 	}
 
     /*

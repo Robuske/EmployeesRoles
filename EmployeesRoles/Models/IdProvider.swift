@@ -10,7 +10,13 @@ import Foundation
 
 class IdProvider: Codable {
 	
-	static let instance = IdProvider()
+	static let instance: IdProvider = {
+		if let oldInstance = DataLayer.instance.loadIdProvider() {
+			return oldInstance
+		}
+		
+		return IdProvider()
+	}()
 	
 	private var nextCompanyId: UInt = 0
 	private var nextRoleId: UInt = 0

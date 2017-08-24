@@ -8,9 +8,13 @@
 
 import Foundation
 
-struct Company: Codable, Equatable {
+struct Company: Codable, Equatable, Hashable {
 	let companyId: UInt
 	let name: String
+	
+	var hashValue: Int {
+		return Int(self.companyId)
+	}
 	
 	private(set) var roles = Set<Role>()
 	private(set) var employees = Set<Employee>()
