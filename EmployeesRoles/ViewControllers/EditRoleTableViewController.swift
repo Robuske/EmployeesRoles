@@ -10,7 +10,7 @@ import UIKit
 
 class EditRoleTableViewController: UITableViewController {
 
-	private let unwindSegue = "unwindFromNewRole"
+	private let newRoleUnwindSegue = "unwindFromNewRole"
 	
 	var role: Role?
 	
@@ -107,7 +107,7 @@ class EditRoleTableViewController: UITableViewController {
 			
 			_ = DataLayer.instance.save(company)
 			
-			self.performSegue(withIdentifier: self.unwindSegue, sender: self)
+			self.performSegue(withIdentifier: self.newRoleUnwindSegue, sender: self)
 		}
 	}
 	

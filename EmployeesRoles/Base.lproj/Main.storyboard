@@ -29,88 +29,9 @@
             </objects>
             <point key="canvasLocation" x="-31" y="278"/>
         </scene>
-        <!--Role-->
-        <scene sceneID="2Jb-Se-kCV">
-            <objects>
-                <viewController title="Role" id="PVj-Za-P0U" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="aIa-RX-LeF">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IKJ-eH-TpI" userLabel="Content">
-                                <rect key="frame" x="20" y="84" width="335" height="514"/>
-                                <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacingType="standard" baselineRelativeArrangement="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oXP-x6-XYP" userLabel="Main Stack View">
-                                        <rect key="frame" x="0.0" y="0.0" width="335" height="82"/>
-                                        <subviews>
-                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="top" spacingType="standard" baselineRelativeArrangement="YES" translatesAutoresizingMaskIntoConstraints="NO" id="N2Q-IE-qD9" userLabel="Role Stack View">
-                                                <rect key="frame" x="0.0" y="0.0" width="335" height="41"/>
-                                                <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Role" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pvK-Sw-QKI">
-                                                        <rect key="frame" x="0.0" y="0.0" width="25" height="19.5"/>
-                                                        <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
-                                                        <nil key="textColor"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="roleName" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WIe-0R-yQY">
-                                                        <rect key="frame" x="0.0" y="21.5" width="70" height="19.5"/>
-                                                        <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
-                                                        <nil key="textColor"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                </subviews>
-                                            </stackView>
-                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="top" spacingType="standard" baselineRelativeArrangement="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Had-kG-aVa" userLabel="Salary Stack View">
-                                                <rect key="frame" x="0.0" y="41" width="335" height="41"/>
-                                                <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Salary" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V7p-bd-pHF">
-                                                        <rect key="frame" x="0.0" y="0.0" width="35" height="19.5"/>
-                                                        <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
-                                                        <nil key="textColor"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="roleSalary" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wNv-my-aq2">
-                                                        <rect key="frame" x="0.0" y="21.5" width="72.5" height="19.5"/>
-                                                        <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
-                                                        <nil key="textColor"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                </subviews>
-                                            </stackView>
-                                        </subviews>
-                                        <variation key="heightClass=compact" axis="horizontal"/>
-                                    </stackView>
-                                </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstItem="oXP-x6-XYP" firstAttribute="leading" secondItem="IKJ-eH-TpI" secondAttribute="leading" id="FIc-2z-pOf"/>
-                                    <constraint firstAttribute="trailing" secondItem="oXP-x6-XYP" secondAttribute="trailing" id="Ozh-QL-b2Y"/>
-                                    <constraint firstItem="oXP-x6-XYP" firstAttribute="top" secondItem="IKJ-eH-TpI" secondAttribute="top" id="V2V-Hk-v5m"/>
-                                </constraints>
-                            </view>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="IKJ-eH-TpI" firstAttribute="leading" secondItem="pMB-gM-yMP" secondAttribute="leading" constant="20" id="Y3n-tg-p4Q"/>
-                            <constraint firstItem="IKJ-eH-TpI" firstAttribute="top" secondItem="pMB-gM-yMP" secondAttribute="top" constant="20" id="mc6-JL-By7"/>
-                            <constraint firstItem="pMB-gM-yMP" firstAttribute="trailing" secondItem="IKJ-eH-TpI" secondAttribute="trailing" constant="20" id="nTM-a9-9wD"/>
-                            <constraint firstItem="pMB-gM-yMP" firstAttribute="bottom" secondItem="IKJ-eH-TpI" secondAttribute="bottom" constant="20" id="xGX-Zb-Pd9"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="pMB-gM-yMP"/>
-                    </view>
-                    <navigationItem key="navigationItem" title="Role" id="2tX-um-9KM">
-                        <barButtonItem key="rightBarButtonItem" systemItem="edit" id="0aY-Le-iWs"/>
-                    </navigationItem>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="s5G-ct-IXo" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2797.5999999999999" y="69.715142428785612"/>
-        </scene>
         <!--New Role-->
         <scene sceneID="OAF-ud-mCU">
             <objects>
-                <exit id="t7R-3E-FKa" userLabel="Exit" sceneMemberID="exit"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Pjg-TE-QSW" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tableViewController id="r5K-mr-AfB" customClass="EditRoleTableViewController" customModule="EmployeesRoles" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" keyboardDismissMode="interactive" dataMode="static" style="grouped" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="hhp-MF-13R">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
@@ -148,7 +69,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Salary" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="j28-7O-wMp">
+                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Salary" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="j28-7O-wMp">
                                                     <rect key="frame" x="5" y="5" width="365" height="33.5"/>
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
@@ -172,11 +93,7 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="New Role" id="HTT-KB-ypB">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="uo9-QX-YGL">
-                            <connections>
-                                <segue destination="t7R-3E-FKa" kind="unwind" identifier="unwindFromNewRole" unwindAction="unwindToRolesWith:" id="aaO-dG-Efo"/>
-                            </connections>
-                        </barButtonItem>
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="uo9-QX-YGL"/>
                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="v1l-5j-phM">
                             <connections>
                                 <action selector="saveRole:" destination="r5K-mr-AfB" id="FIU-8M-Vud"/>
@@ -187,8 +104,12 @@
                     <connections>
                         <outlet property="roleTextField" destination="9Tz-zS-EeI" id="tZg-aS-mzj"/>
                         <outlet property="salaryTextField" destination="j28-7O-wMp" id="zyR-Gu-CjC"/>
+                        <segue destination="t7R-3E-FKa" kind="unwind" unwindAction="unwindToRoleWith:" id="qkj-er-smg"/>
+                        <segue destination="t7R-3E-FKa" kind="unwind" unwindAction="unwindToRolesWith:" id="bhn-FB-TzO"/>
                     </connections>
                 </tableViewController>
+                <exit id="t7R-3E-FKa" userLabel="Exit" sceneMemberID="exit"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Pjg-TE-QSW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4815" y="-327"/>
         </scene>
@@ -356,6 +277,9 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="YwJ-EQ-nzD" kind="showDetail" id="HLG-fb-AKS"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
@@ -396,7 +320,7 @@
                     <tabBarItem key="tabBarItem" title="Roles" id="L4H-JQ-aHz"/>
                     <connections>
                         <segue destination="CE8-st-FOO" kind="relationship" relationship="masterViewController" id="cOn-TC-AfZ"/>
-                        <segue destination="PVj-Za-P0U" kind="relationship" relationship="detailViewController" id="hVk-h3-CZg"/>
+                        <segue destination="YwJ-EQ-nzD" kind="relationship" relationship="detailViewController" id="T4f-gE-PQk"/>
                     </connections>
                 </splitViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wGl-S4-BsH" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -406,6 +330,7 @@
         <!--Navigation Controller-->
         <scene sceneID="Z1H-Oe-xpy">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="708-mW-qUJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="x3m-cL-Mk9" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="8GL-lH-VCj">
@@ -417,12 +342,111 @@
                         <segue destination="r5K-mr-AfB" kind="relationship" relationship="rootViewController" id="Hql-ld-HVl"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="708-mW-qUJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3952" y="-326.53673163418296"/>
         </scene>
+        <!--Role-->
+        <scene sceneID="Fqa-Rv-toG">
+            <objects>
+                <tableViewController id="YwJ-EQ-nzD" customClass="EditRoleTableViewController" customModule="EmployeesRoles" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" keyboardDismissMode="interactive" dataMode="static" style="grouped" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="pG8-Ls-NTz">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <sections>
+                            <tableViewSection id="l1N-7u-iYo">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="t5n-u0-D26" userLabel="Role Cell">
+                                        <rect key="frame" x="0.0" y="35" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="t5n-u0-D26" id="D2f-D9-wuY">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="top" spacingType="standard" baselineRelativeArrangement="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TEb-Ye-KFQ" userLabel="Role Stack View">
+                                                    <rect key="frame" x="5" y="5" width="365" height="33.5"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Role" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qG1-Vo-Inp">
+                                                            <rect key="frame" x="0.0" y="0.0" width="25" height="16"/>
+                                                            <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="roleName" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yly-cN-fE3">
+                                                            <rect key="frame" x="0.0" y="18" width="70" height="15.5"/>
+                                                            <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                </stackView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="TEb-Ye-KFQ" secondAttribute="bottom" constant="5" id="cTl-rA-MDW"/>
+                                                <constraint firstItem="TEb-Ye-KFQ" firstAttribute="leading" secondItem="D2f-D9-wuY" secondAttribute="leading" constant="5" id="lrK-4z-Yod"/>
+                                                <constraint firstItem="TEb-Ye-KFQ" firstAttribute="top" secondItem="D2f-D9-wuY" secondAttribute="top" constant="5" id="mAY-1J-qgz"/>
+                                                <constraint firstAttribute="trailing" secondItem="TEb-Ye-KFQ" secondAttribute="trailing" constant="5" id="qw6-K5-Nek"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="xdE-E3-ob5" userLabel="Salary Cell">
+                                        <rect key="frame" x="0.0" y="79" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="xdE-E3-ob5" id="2eQ-YT-OT4">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="top" spacingType="standard" baselineRelativeArrangement="YES" translatesAutoresizingMaskIntoConstraints="NO" id="shl-Pb-xKi" userLabel="Salary Stack View">
+                                                    <rect key="frame" x="5" y="5" width="365" height="33.5"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Salary" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HqB-vQ-FbR">
+                                                            <rect key="frame" x="0.0" y="0.0" width="35" height="16"/>
+                                                            <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="roleSalary" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lVL-5L-d53">
+                                                            <rect key="frame" x="0.0" y="18" width="72.5" height="15.5"/>
+                                                            <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                </stackView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="shl-Pb-xKi" firstAttribute="leading" secondItem="2eQ-YT-OT4" secondAttribute="leading" constant="5" id="1WW-Tz-nds"/>
+                                                <constraint firstItem="shl-Pb-xKi" firstAttribute="top" secondItem="2eQ-YT-OT4" secondAttribute="top" constant="5" id="NDA-g3-HF9"/>
+                                                <constraint firstAttribute="bottom" secondItem="shl-Pb-xKi" secondAttribute="bottom" constant="5" id="PYw-4F-hU7"/>
+                                                <constraint firstAttribute="trailing" secondItem="shl-Pb-xKi" secondAttribute="trailing" constant="5" id="mes-Hf-kGJ"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                        </sections>
+                        <connections>
+                            <outlet property="dataSource" destination="YwJ-EQ-nzD" id="F52-50-hts"/>
+                            <outlet property="delegate" destination="YwJ-EQ-nzD" id="tGU-rw-VBL"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Role" id="9Nd-tR-d4u">
+                        <barButtonItem key="rightBarButtonItem" systemItem="edit" id="026-8j-HLi">
+                            <connections>
+                                <segue destination="x3m-cL-Mk9" kind="presentation" modalPresentationStyle="currentContext" modalTransitionStyle="crossDissolve" id="tXL-CW-qJQ"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DgN-Id-uuL" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2798" y="99"/>
+        </scene>
     </scenes>
     <inferredMetricsTieBreakers>
+        <segue reference="HLG-fb-AKS"/>
+        <segue reference="tXL-CW-qJQ"/>
         <segue reference="oqb-Yg-Nem"/>
     </inferredMetricsTieBreakers>
 </document>
