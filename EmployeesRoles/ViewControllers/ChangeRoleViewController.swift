@@ -41,10 +41,10 @@ class ChangeRoleViewController: UIViewController {
 	private func setUpEdit() {
 		if self.role == nil {
 			self.edit = false
-			self.navigationItem.title = NSLocalizedString("newRole", comment: "Title for the new role screen")
+			self.navigationItem.title = NSLocalizedString("newRole", tableName: "Localizable", bundle: Bundle.main, value: "New Role", comment: "Title for the new role screen")
 		} else {
 			self.edit = true
-			self.navigationItem.title = NSLocalizedString("editRole", comment: "Title for the edit role screen")
+			self.navigationItem.title = NSLocalizedString("editRole", tableName: "Localizable", bundle: Bundle.main, value: "Edit Role", comment: "Title for the edit role screen")
 		}
 	}
 	
@@ -57,6 +57,8 @@ class ChangeRoleViewController: UIViewController {
 			self.salaryTextField.text = ""
 		}
 	}
+	
+	
     
 
     /*
