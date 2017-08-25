@@ -1,31 +1,34 @@
 //
-//  RoleViewController.swift
+//  EditRoleTableViewController.swift
 //  EmployeesRoles
 //
-//  Created by Rodrigo Cardoso Buske on 24/08/17.
+//  Created by Rodrigo Cardoso Buske on 25/08/17.
 //  Copyright © 2017 Buske Org. All rights reserved.
 //
 
 import UIKit
 
-class ChangeRoleViewController: UIViewController, KeyboardDelegate {
+class EditRoleTableViewController: UITableViewController {
+
+	private let unwindSegue = "unwindFromNewRole"
 	
 	var role: Role?
 	
-	@IBOutlet weak var bottomLayoutConstraint: NSLayoutConstraint! // swiftlint:disable:this private_outlet
 	@IBOutlet private weak var roleTextField: UITextField!
 	@IBOutlet private weak var salaryTextField: UITextField!
 	
 	private var edit = false
 	
+	// MARK: - View Methods
+	
     override func viewDidLoad() {
         super.viewDidLoad()
     }
-	
+
 	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(animated)
 		
-		self.loadNotifications()
+		self.setHideKeyboardOnTap()
 		
 		self.setUpEdit()
 		self.fillTextFields()
@@ -34,14 +37,14 @@ class ChangeRoleViewController: UIViewController, KeyboardDelegate {
 	override func viewWillDisappear(_ animated: Bool) {
 		super.viewWillDisappear(animated)
 		
-		self.unloadNotifications()
-		
 		self.role = nil
 	}
 	
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
+	
+	// MARK: - General Methods
 	
 	private func setUpEdit() {
 		if self.role == nil {
@@ -63,9 +66,51 @@ class ChangeRoleViewController: UIViewController, KeyboardDelegate {
 		}
 	}
 	
+	private func setHideKeyboardOnTap() {
+		let tap: UITapGestureRecognizer =
+			UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard) )
+		tap.cancelsTouchesInView = false
+		
+		view.addGestureRecognizer(tap)
+	}
 	
-    
-
+	@objc
+	private func dismissKeyboard() {
+		view.endEditing(true)
+	}
+	
+	private func testFilledFields() -> Bool {
+		return self.roleTextField.text != "" && self.salaryTextField.text != ""
+	}
+	
+	@IBAction func saveRole(_ sender: UIBarButtonItem) {
+		if self.testFilledFields() {
+			
+			var company = DataLayer.instance.loadCompany()
+			
+			let newRoleName = self.roleTextField.text!
+			let newSalary = UInt(self.salaryTextField.text!)!
+			
+			if var oldRole = self.role {
+				oldRole.name = newRoleName
+				oldRole.salary = newSalary
+				
+				company.edit(oldRole)
+			
+			} else {
+				
+				let newRole = Role(name: newRoleName, salary: newSalary)
+				
+				company.add(newRole)
+				
+			}
+			
+			_ = DataLayer.instance.save(company)
+			
+			self.performSegue(withIdentifier: self.unwindSegue, sender: self)
+		}
+	}
+	
     /*
     // MARK: - Navigation
 

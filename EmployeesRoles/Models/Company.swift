@@ -28,11 +28,11 @@ struct Company: Codable, Equatable, Hashable {
 		return lhs.companyId == rhs.companyId
 	}
 	
-	mutating func addRole(role: Role) {
+	mutating func add(_ role: Role) {
 		self.roles.insert(role)
 	}
 	
-	mutating func addEmployee(employee: Employee) {
+	mutating func add(_ employee: Employee) {
 		self.employees.insert(employee)
 	}
 	

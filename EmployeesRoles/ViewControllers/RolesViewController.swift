@@ -13,25 +13,19 @@ class RolesViewController: UIViewController, UITableViewDataSource, UITableViewD
 	private let roleCellIdentifier = "roleCell"
 	private var roles = [Role]()
 	
-    override func viewDidLoad() {
+	@IBOutlet private weak var table: UITableView!
+	
+	override func viewDidLoad() {
         super.viewDidLoad()
     }
 	
 	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(animated)
 		
-		if let oldCompany = DataLayer.instance.loadCompanies().first {
-			
-			self.roles = oldCompany.roles.sorted { $0.name > $1.name }
-			
-		} else {
-			let newCompany = Company(name: "Awesome Inc")
-			
-			let allCompanies = Set([newCompany])
-			_ = DataLayer.instance.save(allCompanies)
-			
-			self.roles = []
-		}
+		let company = DataLayer.instance.loadCompany()
+		self.roles = company.roles.sorted { $0.name < $1.name }
+		
+		self.table.reloadSections(IndexSet([0]), with: .right)
 	}
 
     override func didReceiveMemoryWarning() {

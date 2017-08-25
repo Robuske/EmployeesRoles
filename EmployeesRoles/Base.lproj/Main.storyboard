@@ -6,7 +6,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13165.3"/>
-        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -108,68 +107,80 @@
             <point key="canvasLocation" x="2797.5999999999999" y="69.715142428785612"/>
         </scene>
         <!--New Role-->
-        <scene sceneID="8MN-0S-jim">
+        <scene sceneID="OAF-ud-mCU">
             <objects>
-                <viewController title="New Role" id="59f-t9-jNH" customClass="ChangeRoleViewController" customModule="EmployeesRoles" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="HxH-TI-2rU">
+                <exit id="t7R-3E-FKa" userLabel="Exit" sceneMemberID="exit"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Pjg-TE-QSW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tableViewController id="r5K-mr-AfB" customClass="EditRoleTableViewController" customModule="EmployeesRoles" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" keyboardDismissMode="interactive" dataMode="static" style="grouped" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="hhp-MF-13R">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0Wj-sR-fnc" userLabel="Content">
-                                <rect key="frame" x="20" y="84" width="335" height="563"/>
-                                <subviews>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Salary" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Rpe-dp-naf">
-                                        <rect key="frame" x="0.0" y="50" width="335" height="30"/>
-                                        <nil key="textColor"/>
-                                        <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
-                                        <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
-                                    </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Role" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="XAz-zq-HNi">
-                                        <rect key="frame" x="0.0" y="0.0" width="335" height="30"/>
-                                        <nil key="textColor"/>
-                                        <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
-                                        <textInputTraits key="textInputTraits" autocapitalizationType="words" returnKeyType="next" textContentType="organization-title"/>
-                                    </textField>
-                                </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstItem="Rpe-dp-naf" firstAttribute="top" secondItem="XAz-zq-HNi" secondAttribute="bottom" multiplier="1.4" constant="8" symbolic="YES" id="2lQ-W8-eH7"/>
-                                    <constraint firstItem="XAz-zq-HNi" firstAttribute="top" secondItem="0Wj-sR-fnc" secondAttribute="top" id="Ag9-Ui-iCv"/>
-                                    <constraint firstItem="Rpe-dp-naf" firstAttribute="leading" secondItem="0Wj-sR-fnc" secondAttribute="leading" id="T1S-Wy-t6R"/>
-                                    <constraint firstItem="XAz-zq-HNi" firstAttribute="leading" secondItem="0Wj-sR-fnc" secondAttribute="leading" id="VdJ-vt-UlS"/>
-                                    <constraint firstAttribute="trailing" secondItem="Rpe-dp-naf" secondAttribute="trailing" id="ZUc-dB-dLP"/>
-                                    <constraint firstAttribute="trailing" secondItem="XAz-zq-HNi" secondAttribute="trailing" id="eHb-pp-bQg"/>
-                                </constraints>
-                            </view>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="0Wj-sR-fnc" firstAttribute="top" secondItem="K9d-4Y-R4M" secondAttribute="top" constant="20" id="8Ir-Ln-yEH"/>
-                            <constraint firstItem="K9d-4Y-R4M" firstAttribute="bottom" secondItem="0Wj-sR-fnc" secondAttribute="bottom" constant="20" id="dRD-yb-r2N"/>
-                            <constraint firstItem="K9d-4Y-R4M" firstAttribute="trailing" secondItem="0Wj-sR-fnc" secondAttribute="trailing" constant="20" id="phZ-C5-qqJ"/>
-                            <constraint firstItem="0Wj-sR-fnc" firstAttribute="leading" secondItem="K9d-4Y-R4M" secondAttribute="leading" constant="20" id="ycd-66-t7m"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="K9d-4Y-R4M"/>
-                    </view>
-                    <navigationItem key="navigationItem" title="New Role" id="skJ-hY-eL7">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="XeD-Cd-7eE">
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <sections>
+                            <tableViewSection id="oea-qG-IMH">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="MdL-t4-IyF" userLabel="Role Cell">
+                                        <rect key="frame" x="0.0" y="35" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="MdL-t4-IyF" id="7Nx-Kw-tc9">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Role" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="9Tz-zS-EeI">
+                                                    <rect key="frame" x="20" y="6" width="335" height="30"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <nil key="textColor"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
+                                                    <textInputTraits key="textInputTraits" autocapitalizationType="words" enablesReturnKeyAutomatically="YES" textContentType="organization-title"/>
+                                                </textField>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="H4b-Yp-mfs" userLabel="Salary Cell">
+                                        <rect key="frame" x="0.0" y="79" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="H4b-Yp-mfs" id="pco-BY-kul">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Salary" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="j28-7O-wMp">
+                                                    <rect key="frame" x="20" y="6" width="335" height="30"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <nil key="textColor"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
+                                                    <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                                </textField>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                        </sections>
+                        <connections>
+                            <outlet property="dataSource" destination="r5K-mr-AfB" id="Z4r-mO-PCa"/>
+                            <outlet property="delegate" destination="r5K-mr-AfB" id="SZF-xT-Hfo"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="New Role" id="HTT-KB-ypB">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="uo9-QX-YGL">
                             <connections>
-                                <segue destination="Q3Y-Gk-mLC" kind="unwind" unwindAction="unwindToRolesWith:" id="UUn-ab-0n8"/>
+                                <segue destination="t7R-3E-FKa" kind="unwind" identifier="unwindFromNewRole" unwindAction="unwindToRolesWith:" id="aaO-dG-Efo"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="VDU-Cb-uVm"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="v1l-5j-phM">
+                            <connections>
+                                <action selector="saveRole:" destination="r5K-mr-AfB" id="FIU-8M-Vud"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
-                        <outlet property="bottomLayoutConstraint" destination="dRD-yb-r2N" id="DwH-bp-fa7"/>
-                        <outlet property="roleTextField" destination="XAz-zq-HNi" id="7H7-Vn-GXp"/>
-                        <outlet property="salaryTextField" destination="Rpe-dp-naf" id="K17-Ee-W1p"/>
+                        <outlet property="roleTextField" destination="9Tz-zS-EeI" id="tZg-aS-mzj"/>
+                        <outlet property="salaryTextField" destination="j28-7O-wMp" id="zyR-Gu-CjC"/>
                     </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="sJF-84-OJi" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <exit id="Q3Y-Gk-mLC" userLabel="Exit" sceneMemberID="exit"/>
+                </tableViewController>
             </objects>
-            <point key="canvasLocation" x="3942" y="-365"/>
+            <point key="canvasLocation" x="3953" y="-326"/>
         </scene>
         <!--Employee-->
         <scene sceneID="wGW-B4-t8h">
@@ -356,10 +367,13 @@
                         <barButtonItem key="backBarButtonItem" title=" " id="voO-7U-LUU"/>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="Nuv-Rn-akD">
                             <connections>
-                                <segue destination="59f-t9-jNH" kind="showDetail" identifier="addRole" id="R8L-TS-9Ti"/>
+                                <segue destination="r5K-mr-AfB" kind="showDetail" identifier="addRole" id="Yy1-S8-ZBr"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="table" destination="j3i-rH-FE2" id="cwB-DP-L3l"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gwK-Vy-gia" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

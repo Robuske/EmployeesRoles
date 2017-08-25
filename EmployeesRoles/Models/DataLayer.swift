@@ -36,6 +36,13 @@ class DataLayer {
 		return true
 	}
 	
+	func save(_ company: Company) -> Bool {
+		var companies = DataLayer.instance.loadCompanies()
+		companies.update(with: company)
+		
+		return DataLayer.instance.save(companies)
+	}
+	
 	func loadCompanies() -> Set<Company> {
 		let decoder = PropertyListDecoder()
 		
@@ -46,6 +53,21 @@ class DataLayer {
 		}
 		
 		return companies
+	}
+	
+	func loadCompany() -> Company {
+		if let oldCompany = DataLayer.instance.loadCompanies().first {
+			
+			return oldCompany
+			
+		} else {
+			let newCompany = Company(name: "Awesome Inc")
+			
+			let allCompanies = Set([newCompany])
+			_ = DataLayer.instance.save(allCompanies)
+			
+			return newCompany
+		}
 	}
 	
 	func loadIdProvider() -> IdProvider? {
