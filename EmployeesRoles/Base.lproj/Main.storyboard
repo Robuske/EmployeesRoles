@@ -126,14 +126,19 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Role" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="9Tz-zS-EeI">
-                                                    <rect key="frame" x="20" y="6" width="335" height="30"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Role" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="9Tz-zS-EeI">
+                                                    <rect key="frame" x="5" y="5" width="365" height="33.5"/>
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="words" enablesReturnKeyAutomatically="YES" textContentType="organization-title"/>
                                                 </textField>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="9Tz-zS-EeI" secondAttribute="trailing" constant="5" id="OQo-Us-4sg"/>
+                                                <constraint firstAttribute="bottom" secondItem="9Tz-zS-EeI" secondAttribute="bottom" constant="5" id="Quc-jJ-rSg"/>
+                                                <constraint firstItem="9Tz-zS-EeI" firstAttribute="top" secondItem="7Nx-Kw-tc9" secondAttribute="top" constant="5" id="jwt-4l-EdA"/>
+                                                <constraint firstItem="9Tz-zS-EeI" firstAttribute="leading" secondItem="7Nx-Kw-tc9" secondAttribute="leading" constant="5" id="k30-n3-pic"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="H4b-Yp-mfs" userLabel="Salary Cell">
@@ -143,14 +148,19 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Salary" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="j28-7O-wMp">
-                                                    <rect key="frame" x="20" y="6" width="335" height="30"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Salary" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="j28-7O-wMp">
+                                                    <rect key="frame" x="5" y="5" width="365" height="33.5"/>
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
-                                                    <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                                    <textInputTraits key="textInputTraits" keyboardType="numberPad" enablesReturnKeyAutomatically="YES"/>
                                                 </textField>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="j28-7O-wMp" firstAttribute="leading" secondItem="pco-BY-kul" secondAttribute="leading" constant="5" id="J4u-oT-il5"/>
+                                                <constraint firstAttribute="trailing" secondItem="j28-7O-wMp" secondAttribute="trailing" constant="5" id="RuX-m5-SVW"/>
+                                                <constraint firstAttribute="bottom" secondItem="j28-7O-wMp" secondAttribute="bottom" constant="5" id="WBA-Qs-qyj"/>
+                                                <constraint firstItem="j28-7O-wMp" firstAttribute="top" secondItem="pco-BY-kul" secondAttribute="top" constant="5" id="iBd-2p-nnA"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </cells>
@@ -180,7 +190,7 @@
                     </connections>
                 </tableViewController>
             </objects>
-            <point key="canvasLocation" x="3953" y="-326"/>
+            <point key="canvasLocation" x="4815" y="-327"/>
         </scene>
         <!--Employee-->
         <scene sceneID="wGW-B4-t8h">
@@ -367,7 +377,7 @@
                         <barButtonItem key="backBarButtonItem" title=" " id="voO-7U-LUU"/>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="Nuv-Rn-akD">
                             <connections>
-                                <segue destination="r5K-mr-AfB" kind="showDetail" identifier="addRole" id="Yy1-S8-ZBr"/>
+                                <segue destination="x3m-cL-Mk9" kind="presentation" identifier="addRole" modalPresentationStyle="formSheet" id="Yy1-S8-ZBr"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -392,6 +402,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wGl-S4-BsH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1031" y="-350"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Z1H-Oe-xpy">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="x3m-cL-Mk9" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="8GL-lH-VCj">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="r5K-mr-AfB" kind="relationship" relationship="rootViewController" id="Hql-ld-HVl"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="708-mW-qUJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3952" y="-326.53673163418296"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>

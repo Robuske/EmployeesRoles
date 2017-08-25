@@ -17,21 +17,25 @@ class RolesViewController: UIViewController, UITableViewDataSource, UITableViewD
 	
 	override func viewDidLoad() {
         super.viewDidLoad()
+		
+		self.reloadData()
     }
 	
 	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(animated)
-		
-		let company = DataLayer.instance.loadCompany()
-		self.roles = company.roles.sorted { $0.name < $1.name }
-		
-		self.table.reloadSections(IndexSet([0]), with: .right)
 	}
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+	
+	func reloadData() {
+		let company = DataLayer.instance.loadCompany()
+		self.roles = company.roles.sorted { $0.name < $1.name }
+		
+		self.table.reloadSections(IndexSet([0]), with: .right)
+	}
 	
 	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 		return self.roles.count
@@ -49,7 +53,7 @@ class RolesViewController: UIViewController, UITableViewDataSource, UITableViewD
 	}
 	
 	@IBAction func unwindToRoles(with unwindSegue: UIStoryboardSegue) {
-		
+		self.reloadData()
 	}
 
     /*
