@@ -8,10 +8,11 @@
 
 import UIKit
 
-class ChangeRoleViewController: UIViewController {
-
+class ChangeRoleViewController: UIViewController, KeyboardDelegate {
+	
 	var role: Role?
 	
+	@IBOutlet weak var bottomLayoutConstraint: NSLayoutConstraint! // swiftlint:disable:this private_outlet
 	@IBOutlet private weak var roleTextField: UITextField!
 	@IBOutlet private weak var salaryTextField: UITextField!
 	
@@ -24,12 +25,16 @@ class ChangeRoleViewController: UIViewController {
 	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(animated)
 		
+		self.loadNotifications()
+		
 		self.setUpEdit()
 		self.fillTextFields()
 	}
 	
 	override func viewWillDisappear(_ animated: Bool) {
 		super.viewWillDisappear(animated)
+		
+		self.unloadNotifications()
 		
 		self.role = nil
 	}
