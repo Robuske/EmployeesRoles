@@ -11,14 +11,14 @@ import UIKit
 class RolesViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
 	private let roleCellIdentifier = "roleCell"
-	private var roles: [Role]?
+	private var roles = [Role]()
 	
     override func viewDidLoad() {
         super.viewDidLoad()
     }
 	
-	override func viewDidAppear(_ animated: Bool) {
-		super.viewDidAppear(animated)
+	override func viewWillAppear(_ animated: Bool) {
+		super.viewWillAppear(animated)
 		
 		if let oldCompany = DataLayer.instance.loadCompanies().first {
 			
@@ -40,16 +40,16 @@ class RolesViewController: UIViewController, UITableViewDataSource, UITableViewD
     }
 	
 	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-		return self.roles?.count ?? 0
+		return self.roles.count
 	}
 	
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		let cell = tableView.dequeueReusableCell(withIdentifier: self.roleCellIdentifier, for: indexPath)
 		
-		if let role = self.roles?[indexPath.row] {
-			cell.textLabel?.text = role.name
-			cell.detailTextLabel?.text = String(role.salary)
-		}
+		let role = self.roles[indexPath.row]
+		
+		cell.textLabel?.text = role.name
+		cell.detailTextLabel?.text = NumberFormatter.localizedString(from: NSNumber(value: role.salary), number: .currency)
 		
 		return cell
 	}

@@ -20,17 +20,12 @@ class ChangeRoleViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
     }
-
-	override func viewDidAppear(_ animated: Bool) {
-		super.viewDidAppear(animated)
+	
+	override func viewWillAppear(_ animated: Bool) {
+		super.viewWillAppear(animated)
 		
-		if self.role == nil {
-			self.edit = false
-			self.navigationItem.title = NSLocalizedString("newRole", comment: "Title for the new role screen")
-		} else {
-			self.edit = true
-			self.navigationItem.title = NSLocalizedString("editRole", comment: "Title for the edit role screen")
-		}
+		self.setUpEdit()
+		self.fillTextFields()
 	}
 	
 	override func viewWillDisappear(_ animated: Bool) {
@@ -42,6 +37,26 @@ class ChangeRoleViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
+	
+	private func setUpEdit() {
+		if self.role == nil {
+			self.edit = false
+			self.navigationItem.title = NSLocalizedString("newRole", comment: "Title for the new role screen")
+		} else {
+			self.edit = true
+			self.navigationItem.title = NSLocalizedString("editRole", comment: "Title for the edit role screen")
+		}
+	}
+	
+	private func fillTextFields() {
+		if let currentRole = self.role {
+			self.roleTextField.text = currentRole.name
+			self.salaryTextField.text = NumberFormatter.localizedString(from: NSNumber(value: currentRole.salary), number: .currency)
+		} else {
+			self.roleTextField.text = ""
+			self.salaryTextField.text = ""
+		}
+	}
     
 
     /*

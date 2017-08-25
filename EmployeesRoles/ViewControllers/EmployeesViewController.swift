@@ -10,23 +10,47 @@ import UIKit
 
 class EmployeesViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
+	private let employeeCellIdentifier = "employeeCell"
+	private var employees = [Employee]()
+	
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
     }
+	
+	override func viewWillAppear(_ animated: Bool) {
+		super.viewWillAppear(animated)
+		
+		if let oldCompany = DataLayer.instance.loadCompanies().first {
+			
+			self.employees = oldCompany.employees.sorted { $0.name > $1.name }
+			
+		} else {
+			let newCompany = Company(name: "Awesome Inc")
+			
+			let allCompanies = Set([newCompany])
+			_ = DataLayer.instance.save(allCompanies)
+			
+			self.employees = []
+		}
+	}
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 	
 	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-		return 0
+		return self.employees.count
 	}
 	
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-		return UITableViewCell()
+		let cell = tableView.dequeueReusableCell(withIdentifier: self.employeeCellIdentifier, for: indexPath)
+		
+		let employee = self.employees[indexPath.row]
+		
+		cell.textLabel?.text = employee.name
+		cell.detailTextLabel?.text = employee.role.name
+		
+		return cell
 	}
 
     /*
