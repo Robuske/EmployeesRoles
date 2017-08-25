@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13189.4" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="49e-Tb-3d3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13178.6" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="49e-Tb-3d3">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13165.3"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13156.2"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -35,7 +37,66 @@
                     <view key="view" contentMode="scaleToFill" id="aIa-RX-LeF">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IKJ-eH-TpI" userLabel="Content">
+                                <rect key="frame" x="20" y="84" width="335" height="514"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacingType="standard" baselineRelativeArrangement="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oXP-x6-XYP" userLabel="Main Stack View">
+                                        <rect key="frame" x="0.0" y="0.0" width="335" height="82"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="top" spacingType="standard" baselineRelativeArrangement="YES" translatesAutoresizingMaskIntoConstraints="NO" id="N2Q-IE-qD9" userLabel="Role Stack View">
+                                                <rect key="frame" x="0.0" y="0.0" width="335" height="41"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Role" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pvK-Sw-QKI">
+                                                        <rect key="frame" x="0.0" y="0.0" width="25" height="19.5"/>
+                                                        <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="roleName" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WIe-0R-yQY">
+                                                        <rect key="frame" x="0.0" y="21.5" width="70" height="19.5"/>
+                                                        <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="top" spacingType="standard" baselineRelativeArrangement="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Had-kG-aVa" userLabel="Salary Stack View">
+                                                <rect key="frame" x="0.0" y="41" width="335" height="41"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Salary" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V7p-bd-pHF">
+                                                        <rect key="frame" x="0.0" y="0.0" width="35" height="19.5"/>
+                                                        <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="roleSalary" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wNv-my-aq2">
+                                                        <rect key="frame" x="0.0" y="21.5" width="72.5" height="19.5"/>
+                                                        <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                            </stackView>
+                                        </subviews>
+                                        <variation key="heightClass=compact" axis="horizontal"/>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="oXP-x6-XYP" firstAttribute="leading" secondItem="IKJ-eH-TpI" secondAttribute="leading" id="FIc-2z-pOf"/>
+                                    <constraint firstAttribute="trailing" secondItem="oXP-x6-XYP" secondAttribute="trailing" id="Ozh-QL-b2Y"/>
+                                    <constraint firstItem="oXP-x6-XYP" firstAttribute="top" secondItem="IKJ-eH-TpI" secondAttribute="top" id="V2V-Hk-v5m"/>
+                                </constraints>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="IKJ-eH-TpI" firstAttribute="leading" secondItem="pMB-gM-yMP" secondAttribute="leading" constant="20" id="Y3n-tg-p4Q"/>
+                            <constraint firstItem="IKJ-eH-TpI" firstAttribute="top" secondItem="pMB-gM-yMP" secondAttribute="top" constant="20" id="mc6-JL-By7"/>
+                            <constraint firstItem="pMB-gM-yMP" firstAttribute="trailing" secondItem="IKJ-eH-TpI" secondAttribute="trailing" constant="20" id="nTM-a9-9wD"/>
+                            <constraint firstItem="pMB-gM-yMP" firstAttribute="bottom" secondItem="IKJ-eH-TpI" secondAttribute="bottom" constant="20" id="xGX-Zb-Pd9"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="pMB-gM-yMP"/>
                     </view>
                     <navigationItem key="navigationItem" title="Role" id="2tX-um-9KM">
@@ -44,7 +105,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="s5G-ct-IXo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2798" y="70"/>
+            <point key="canvasLocation" x="2797.5999999999999" y="69.715142428785612"/>
         </scene>
         <!--New Role-->
         <scene sceneID="8MN-0S-jim">
@@ -55,16 +116,16 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0Wj-sR-fnc" userLabel="Content">
-                                <rect key="frame" x="40" y="104" width="295" height="523"/>
+                                <rect key="frame" x="20" y="84" width="335" height="563"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Salary" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Rpe-dp-naf">
-                                        <rect key="frame" x="0.0" y="50" width="295" height="30"/>
+                                        <rect key="frame" x="0.0" y="50" width="335" height="30"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
                                         <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Role" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="XAz-zq-HNi">
-                                        <rect key="frame" x="0.0" y="0.0" width="295" height="30"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="335" height="30"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="words" returnKeyType="next" textContentType="organization-title"/>
@@ -72,7 +133,7 @@
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstItem="Rpe-dp-naf" firstAttribute="top" secondItem="XAz-zq-HNi" secondAttribute="bottom" constant="20" id="2lQ-W8-eH7"/>
+                                    <constraint firstItem="Rpe-dp-naf" firstAttribute="top" secondItem="XAz-zq-HNi" secondAttribute="bottom" multiplier="1.4" constant="8" symbolic="YES" id="2lQ-W8-eH7"/>
                                     <constraint firstItem="XAz-zq-HNi" firstAttribute="top" secondItem="0Wj-sR-fnc" secondAttribute="top" id="Ag9-Ui-iCv"/>
                                     <constraint firstItem="Rpe-dp-naf" firstAttribute="leading" secondItem="0Wj-sR-fnc" secondAttribute="leading" id="T1S-Wy-t6R"/>
                                     <constraint firstItem="XAz-zq-HNi" firstAttribute="leading" secondItem="0Wj-sR-fnc" secondAttribute="leading" id="VdJ-vt-UlS"/>
@@ -83,10 +144,10 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="0Wj-sR-fnc" firstAttribute="top" secondItem="K9d-4Y-R4M" secondAttribute="top" constant="40" id="8Ir-Ln-yEH"/>
-                            <constraint firstItem="K9d-4Y-R4M" firstAttribute="bottom" secondItem="0Wj-sR-fnc" secondAttribute="bottom" constant="40" id="dRD-yb-r2N"/>
-                            <constraint firstAttribute="trailing" secondItem="0Wj-sR-fnc" secondAttribute="trailing" constant="40" id="phZ-C5-qqJ"/>
-                            <constraint firstItem="0Wj-sR-fnc" firstAttribute="leading" secondItem="HxH-TI-2rU" secondAttribute="leading" constant="40" id="ycd-66-t7m"/>
+                            <constraint firstItem="0Wj-sR-fnc" firstAttribute="top" secondItem="K9d-4Y-R4M" secondAttribute="top" constant="20" id="8Ir-Ln-yEH"/>
+                            <constraint firstItem="K9d-4Y-R4M" firstAttribute="bottom" secondItem="0Wj-sR-fnc" secondAttribute="bottom" constant="20" id="dRD-yb-r2N"/>
+                            <constraint firstItem="K9d-4Y-R4M" firstAttribute="trailing" secondItem="0Wj-sR-fnc" secondAttribute="trailing" constant="20" id="phZ-C5-qqJ"/>
+                            <constraint firstItem="0Wj-sR-fnc" firstAttribute="leading" secondItem="K9d-4Y-R4M" secondAttribute="leading" constant="20" id="ycd-66-t7m"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="K9d-4Y-R4M"/>
                     </view>
@@ -152,7 +213,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelectionDuringEditing="YES" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="TBC-Yx-c50">
-                                <rect key="frame" x="0.0" y="116" width="375" height="502"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="554"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="employeeCell" textLabel="wJn-mo-KPB" detailTextLabel="Sga-VH-wsq" style="IBUITableViewCellStyleValue1" id="dbM-Ik-fBT">
@@ -247,7 +308,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelectionDuringEditing="YES" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="j3i-rH-FE2">
-                                <rect key="frame" x="0.0" y="116" width="375" height="502"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="554"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="roleCell" textLabel="m0G-5U-A3y" detailTextLabel="JOM-9C-k8i" style="IBUITableViewCellStyleValue1" id="ge2-bl-QFN">
