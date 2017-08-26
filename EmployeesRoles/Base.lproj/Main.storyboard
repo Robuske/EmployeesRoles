@@ -195,7 +195,7 @@
                         <barButtonItem key="backBarButtonItem" title=" " id="Hsz-2a-sH3"/>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="677-v8-kOB">
                             <connections>
-                                <segue destination="sJz-Oj-hc9" kind="presentation" identifier="addEmployee" modalPresentationStyle="formSheet" id="YqK-Hu-Njq"/>
+                                <segue destination="sJz-Oj-hc9" kind="presentation" identifier="" modalPresentationStyle="formSheet" id="YqK-Hu-Njq"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -349,7 +349,7 @@
                         <barButtonItem key="backBarButtonItem" title=" " id="voO-7U-LUU"/>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="Nuv-Rn-akD">
                             <connections>
-                                <segue destination="x3m-cL-Mk9" kind="presentation" identifier="addRole" modalPresentationStyle="formSheet" id="Yy1-S8-ZBr"/>
+                                <segue destination="x3m-cL-Mk9" kind="presentation" identifier="" modalPresentationStyle="formSheet" id="Yy1-S8-ZBr"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -482,7 +482,7 @@
                     <connections>
                         <outlet property="roleName" destination="Yly-cN-fE3" id="zSV-DF-luK"/>
                         <outlet property="roleSalary" destination="lVL-5L-d53" id="Yux-ZF-JPK"/>
-                        <segue destination="x3m-cL-Mk9" kind="presentation" identifier="fromRoleToEditRole" modalPresentationStyle="currentContext" modalTransitionStyle="crossDissolve" id="Fg9-NZ-K2Z"/>
+                        <segue destination="x3m-cL-Mk9" kind="presentation" identifier="editRole" modalPresentationStyle="currentContext" modalTransitionStyle="crossDissolve" id="Fg9-NZ-K2Z"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DgN-Id-uuL" userLabel="First Responder" sceneMemberID="firstResponder"/>

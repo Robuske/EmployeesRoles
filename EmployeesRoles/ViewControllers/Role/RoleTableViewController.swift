@@ -14,7 +14,7 @@ class RoleTableViewController: UITableViewController {
 	
 	weak var delegate: ReloadMasterViewDelegate?
 	
-	private let editRoleIdentifier = "fromRoleToEditRole"
+	private let editRoleSegue = "editRole"
 	
 	@IBOutlet private weak var roleName: UILabel!
 	@IBOutlet private weak var roleSalary: UILabel!
@@ -25,10 +25,8 @@ class RoleTableViewController: UITableViewController {
 		self.testIfShouldShow()
 		self.refillData()
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
+	
+	// MARK: - Private Methods
 	
 	private func refillData() {
 		if let currentRole = self.role {
@@ -55,7 +53,7 @@ class RoleTableViewController: UITableViewController {
 
 	@objc
 	private func editRole() {
-		self.performSegue(withIdentifier: self.editRoleIdentifier, sender: self)
+		self.performSegue(withIdentifier: self.editRoleSegue, sender: self)
 	}
 	
 	@IBAction func unwindToRole(with unwindSegue: UIStoryboardSegue) {

@@ -47,6 +47,10 @@ class EmployeesViewController: UIViewController, UITableViewDataSource, UITableV
 	}
 
     // MARK: - Navigation
+	
+	@IBAction func unwindToEmployees(with unwindSegue: UIStoryboardSegue) {
+		self.reloadData()
+	}
 
 //    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 //
