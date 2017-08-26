@@ -65,6 +65,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E7F788F11F52348300A62502 /* Role */ = {
+			isa = PBXGroup;
+			children = (
+				FC8D3BB71F4CF18300305EF5 /* RolesViewController.swift */,
+				FC4CC8051F50D99200818ADB /* RoleTableViewController.swift */,
+				FC4CC8031F50B80E00818ADB /* EditRoleTableViewController.swift */,
+			);
+			path = Role;
+			sourceTree = "<group>";
+		};
+		E7F788F21F52348D00A62502 /* Employee */ = {
+			isa = PBXGroup;
+			children = (
+				FC8D3BB91F4CF19300305EF5 /* EmployeesViewController.swift */,
+			);
+			path = Employee;
+			sourceTree = "<group>";
+		};
 		FC60C3BF1F5094970044756E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -88,10 +106,8 @@
 		FC8D3B941F4CEE1600305EF5 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				FC8D3BB71F4CF18300305EF5 /* RolesViewController.swift */,
-				FC4CC8051F50D99200818ADB /* RoleTableViewController.swift */,
-				FC4CC8031F50B80E00818ADB /* EditRoleTableViewController.swift */,
-				FC8D3BB91F4CF19300305EF5 /* EmployeesViewController.swift */,
+				E7F788F11F52348300A62502 /* Role */,
+				E7F788F21F52348D00A62502 /* Employee */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";

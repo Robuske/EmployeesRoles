@@ -8,7 +8,11 @@
 
 import UIKit
 
-class RolesViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+protocol ReloadMasterViewDelegate: class {
+	func reloadData()
+}
+
+class RolesViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, ReloadMasterViewDelegate {
 
 	private let roleCellIdentifier = "roleCell"
 	private var roles = [Role]()
@@ -21,21 +25,14 @@ class RolesViewController: UIViewController, UITableViewDataSource, UITableViewD
 		self.reloadData()
     }
 	
-	override func viewWillAppear(_ animated: Bool) {
-		super.viewWillAppear(animated)
-	}
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-	
 	func reloadData() {
 		let company = DataLayer.instance.loadCompany()
 		self.roles = company.roles.sorted { $0.name < $1.name }
 		
-		self.table.reloadSections(IndexSet([0]), with: .right)
+		self.table.reloadSections(IndexSet([0]), with: .automatic)
 	}
+	
+	// MARK: - Table view data source
 	
 	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 		return self.roles.count
@@ -52,17 +49,18 @@ class RolesViewController: UIViewController, UITableViewDataSource, UITableViewD
 		return cell
 	}
 	
+	// MARK: - Navigation
+
 	@IBAction func unwindToRoles(with unwindSegue: UIStoryboardSegue) {
 		self.reloadData()
 	}
-
-    // MARK: - Navigation
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 		if let destinationNavigationController = segue.destination as? UINavigationController,
 			let roleTableViewController = destinationNavigationController.topViewController as? RoleTableViewController {
 			if let selectedRow = self.table.indexPathForSelectedRow?.row {
 				roleTableViewController.role = self.roles[selectedRow]
+				roleTableViewController.delegate = self
 			}
 		}
     }

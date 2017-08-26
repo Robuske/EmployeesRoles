@@ -12,6 +12,8 @@ class RoleTableViewController: UITableViewController {
 
 	var role: Role?
 	
+	weak var delegate: ReloadMasterViewDelegate?
+	
 	private let editRoleIdentifier = "fromRoleToEditRole"
 	
 	@IBOutlet private weak var roleName: UILabel!
@@ -56,12 +58,9 @@ class RoleTableViewController: UITableViewController {
 		self.performSegue(withIdentifier: self.editRoleIdentifier, sender: self)
 	}
 	
-	private func reloadMainView() {
-		// TODO: this
-	}
-	
 	@IBAction func unwindToRole(with unwindSegue: UIStoryboardSegue) {
 		self.refillData()
+		self.delegate?.reloadData()
 	}
 	
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

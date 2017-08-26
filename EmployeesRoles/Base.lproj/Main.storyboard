@@ -212,6 +212,9 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="table" destination="TBC-Yx-c50" id="s8u-ZP-r54"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NrU-qN-q3Q" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
