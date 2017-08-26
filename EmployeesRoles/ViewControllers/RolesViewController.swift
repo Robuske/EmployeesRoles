@@ -59,7 +59,8 @@ class RolesViewController: UIViewController, UITableViewDataSource, UITableViewD
     // MARK: - Navigation
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-		if let roleTableViewController = segue.destination as? RoleTableViewController {
+		if let destinationNavigationController = segue.destination as? UINavigationController,
+			let roleTableViewController = destinationNavigationController.topViewController as? RoleTableViewController {
 			if let selectedRow = self.table.indexPathForSelectedRow?.row {
 				roleTableViewController.role = self.roles[selectedRow]
 			}
