@@ -10,7 +10,8 @@ import UIKit
 
 class EditRoleTableViewController: UITableViewController {
 
-	private let newRoleUnwindSegue = "unwindFromNewRole"
+	private let newRoleUnwindSegue = "fromNewRoleToRoles"
+	private let editRoleUnwindSegue = "fromNewRoleToRole"
 	
 	var role: Role?
 	
@@ -59,7 +60,7 @@ class EditRoleTableViewController: UITableViewController {
 	private func fillTextFields() {
 		if let currentRole = self.role {
 			self.roleTextField.text = currentRole.name
-			self.salaryTextField.text = NumberFormatter.localizedString(from: NSNumber(value: currentRole.salary), number: .currency)
+			self.salaryTextField.text = String(currentRole.salary)
 		} else {
 			self.roleTextField.text = ""
 			self.salaryTextField.text = ""
@@ -83,6 +84,20 @@ class EditRoleTableViewController: UITableViewController {
 		return self.roleTextField.text != "" && self.salaryTextField.text != ""
 	}
 	
+	// MARK: - Navigation
+	
+	private func performCorrectSegue() {
+		if self.edit {
+			self.performSegue(withIdentifier: self.editRoleUnwindSegue, sender: self)
+		} else {
+			self.performSegue(withIdentifier: self.newRoleUnwindSegue, sender: self)
+		}
+	}
+	
+	@IBAction func cancelRole(_ sender: UIBarButtonItem) {
+		self.performCorrectSegue()
+	}
+	
 	@IBAction func saveRole(_ sender: UIBarButtonItem) {
 		if self.testFilledFields() {
 			
@@ -91,11 +106,11 @@ class EditRoleTableViewController: UITableViewController {
 			let newRoleName = self.roleTextField.text!
 			let newSalary = UInt(self.salaryTextField.text!)!
 			
-			if var oldRole = self.role {
-				oldRole.name = newRoleName
-				oldRole.salary = newSalary
+			if self.role != nil {
+				self.role!.name = newRoleName
+				self.role!.salary = newSalary
 				
-				company.edit(oldRole)
+				company.edit(self.role!)
 			
 			} else {
 				
@@ -107,18 +122,14 @@ class EditRoleTableViewController: UITableViewController {
 			
 			_ = DataLayer.instance.save(company)
 			
-			self.performSegue(withIdentifier: self.newRoleUnwindSegue, sender: self)
+			self.performCorrectSegue()
 		}
 	}
-	
-    /*
-    // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+		if let roleTableViewController = segue.destination as? RoleTableViewController {
+			roleTableViewController.role = self.role
+		}
     }
-    */
-
+	
 }

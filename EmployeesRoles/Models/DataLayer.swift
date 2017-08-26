@@ -37,10 +37,10 @@ class DataLayer {
 	}
 	
 	func save(_ company: Company) -> Bool {
-		var companies = DataLayer.instance.loadCompanies()
+		var companies = self.loadCompanies()
 		companies.update(with: company)
 		
-		return DataLayer.instance.save(companies)
+		return self.save(companies)
 	}
 	
 	func loadCompanies() -> Set<Company> {
@@ -56,7 +56,7 @@ class DataLayer {
 	}
 	
 	func loadCompany() -> Company {
-		if let oldCompany = DataLayer.instance.loadCompanies().first {
+		if let oldCompany = self.loadCompanies().first {
 			
 			return oldCompany
 			
@@ -64,7 +64,7 @@ class DataLayer {
 			let newCompany = Company(name: "Awesome Inc")
 			
 			let allCompanies = Set([newCompany])
-			_ = DataLayer.instance.save(allCompanies)
+			_ = self.save(allCompanies)
 			
 			return newCompany
 		}

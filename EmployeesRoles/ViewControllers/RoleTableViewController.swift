@@ -12,33 +12,39 @@ class RoleTableViewController: UITableViewController {
 
 	var role: Role?
 	
+	
+	@IBOutlet private weak var roleName: UILabel!
+	@IBOutlet private weak var roleSalary: UILabel!
+	
     override func viewDidLoad() {
         super.viewDidLoad()
 		
-		self.reloadData()
+		self.refillData()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
 	
-	
-	private func reloadData() {
-		
+	private func refillData() {
+		if let currentRole = self.role {
+			self.roleName.text = currentRole.name
+			self.roleSalary.text = NumberFormatter.localizedString(from: NSNumber(value: currentRole.salary), number: .currency)
+		}
 	}
 	
 	@IBAction func unwindToRole(with unwindSegue: UIStoryboardSegue) {
-		self.reloadData()
+		self.refillData()
 	}
 	
-    /*
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+		
+		if let destinationNavigationController = segue.destination as? UINavigationController,
+			let editRoleTableViewController = destinationNavigationController.topViewController as? EditRoleTableViewController {
+			editRoleTableViewController.role = self.role
+		}
     }
-    */
 
 }

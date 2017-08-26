@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13189.4" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="49e-Tb-3d3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13178.6" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="49e-Tb-3d3">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13165.3"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13156.2"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -93,7 +93,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="New Role" id="HTT-KB-ypB">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="uo9-QX-YGL"/>
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="uo9-QX-YGL">
+                            <connections>
+                                <action selector="cancelRole:" destination="r5K-mr-AfB" id="1AT-Z3-TgT"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="v1l-5j-phM">
                             <connections>
                                 <action selector="saveRole:" destination="r5K-mr-AfB" id="FIU-8M-Vud"/>
@@ -104,8 +108,8 @@
                     <connections>
                         <outlet property="roleTextField" destination="9Tz-zS-EeI" id="tZg-aS-mzj"/>
                         <outlet property="salaryTextField" destination="j28-7O-wMp" id="zyR-Gu-CjC"/>
-                        <segue destination="t7R-3E-FKa" kind="unwind" unwindAction="unwindToRoleWith:" id="qkj-er-smg"/>
-                        <segue destination="t7R-3E-FKa" kind="unwind" unwindAction="unwindToRolesWith:" id="bhn-FB-TzO"/>
+                        <segue destination="t7R-3E-FKa" kind="unwind" identifier="fromNewRoleToRole" unwindAction="unwindToRoleWith:" id="qkj-er-smg"/>
+                        <segue destination="t7R-3E-FKa" kind="unwind" identifier="fromNewRoleToRoles" unwindAction="unwindToRolesWith:" id="bhn-FB-TzO"/>
                     </connections>
                 </tableViewController>
                 <exit id="t7R-3E-FKa" userLabel="Exit" sceneMemberID="exit"/>
@@ -278,7 +282,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="YwJ-EQ-nzD" kind="showDetail" id="HLG-fb-AKS"/>
+                                            <segue destination="YwJ-EQ-nzD" kind="showDetail" identifier="" id="HLG-fb-AKS"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -330,7 +334,6 @@
         <!--Navigation Controller-->
         <scene sceneID="Z1H-Oe-xpy">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="708-mW-qUJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="x3m-cL-Mk9" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="8GL-lH-VCj">
@@ -342,13 +345,14 @@
                         <segue destination="r5K-mr-AfB" kind="relationship" relationship="rootViewController" id="Hql-ld-HVl"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="708-mW-qUJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3952" y="-326.53673163418296"/>
         </scene>
         <!--Role-->
         <scene sceneID="Fqa-Rv-toG">
             <objects>
-                <tableViewController id="YwJ-EQ-nzD" customClass="EditRoleTableViewController" customModule="EmployeesRoles" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="YwJ-EQ-nzD" customClass="RoleTableViewController" customModule="EmployeesRoles" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" keyboardDismissMode="interactive" dataMode="static" style="grouped" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="pG8-Ls-NTz">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -438,6 +442,10 @@
                         </barButtonItem>
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <connections>
+                        <outlet property="roleName" destination="Yly-cN-fE3" id="zSV-DF-luK"/>
+                        <outlet property="roleSalary" destination="lVL-5L-d53" id="Yux-ZF-JPK"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DgN-Id-uuL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -446,7 +454,7 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="HLG-fb-AKS"/>
-        <segue reference="tXL-CW-qJQ"/>
+        <segue reference="Yy1-S8-ZBr"/>
         <segue reference="oqb-Yg-Nem"/>
     </inferredMetricsTieBreakers>
 </document>
