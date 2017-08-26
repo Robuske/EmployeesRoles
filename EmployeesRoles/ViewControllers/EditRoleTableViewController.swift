@@ -104,7 +104,7 @@ class EditRoleTableViewController: UITableViewController {
 			var company = DataLayer.instance.loadCompany()
 			
 			let newRoleName = self.roleTextField.text!
-			let newSalary = UInt(self.salaryTextField.text!)!
+			let newSalary = UInt(self.salaryTextField.text!.stripToInt())
 			
 			if self.role != nil {
 				self.role!.name = newRoleName
