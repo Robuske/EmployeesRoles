@@ -273,12 +273,40 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="215" id="yIC-D1-lHa" userLabel="Birthdate Cell">
+                                        <rect key="frame" x="0.0" y="123" width="375" height="215"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="yIC-D1-lHa" id="b56-4A-7xs">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="214.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="qLF-rd-f4x">
+                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="214.5"/>
+                                                    <date key="date" timeIntervalSinceReferenceDate="525493083.08293498">
+                                                        <!--2017-08-27 2:18:03 AM +0000-->
+                                                    </date>
+                                                    <date key="minimumDate" timeIntervalSinceReferenceDate="-3187256012">
+                                                        <!--1900-01-01 11:06:28 AM +0000-->
+                                                    </date>
+                                                    <date key="maximumDate" timeIntervalSinceReferenceDate="567946800">
+                                                        <!--2018-12-31 11:00:00 AM +0000-->
+                                                    </date>
+                                                </datePicker>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="qLF-rd-f4x" secondAttribute="trailing" id="6cw-gK-p0A"/>
+                                                <constraint firstItem="qLF-rd-f4x" firstAttribute="leading" secondItem="b56-4A-7xs" secondAttribute="leading" id="Q0s-5P-Nb0"/>
+                                                <constraint firstAttribute="bottom" secondItem="qLF-rd-f4x" secondAttribute="bottom" id="kZH-XQ-EeV"/>
+                                                <constraint firstItem="qLF-rd-f4x" firstAttribute="top" secondItem="b56-4A-7xs" secondAttribute="top" id="qDY-TX-Xks"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
                                 </cells>
                             </tableViewSection>
                             <tableViewSection id="iqS-ON-RA7">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" id="Gem-vx-HpA" userLabel="Role Cell">
-                                        <rect key="frame" x="0.0" y="151" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="366" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Gem-vx-HpA" id="ANR-B7-E8y">
                                             <rect key="frame" x="0.0" y="0.0" width="342" height="43.5"/>
@@ -314,7 +342,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="daE-2S-CB2" userLabel="Salary Cell">
-                                        <rect key="frame" x="0.0" y="195" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="410" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="daE-2S-CB2" id="4Me-MV-mro">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
@@ -356,6 +384,11 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="birthdateLabel" destination="aQp-1l-SMa" id="0NY-2P-L54"/>
+                        <outlet property="birthdatePicker" destination="qLF-rd-f4x" id="gE5-cT-u2W"/>
+                        <outlet property="nameField" destination="YSX-my-gZG" id="jqL-p9-cEp"/>
+                        <outlet property="roleNameLabel" destination="Mvn-pa-3Tk" id="xdB-OA-ZAG"/>
+                        <outlet property="salaryField" destination="yPg-qN-Hb1" id="Lbz-tf-hN8"/>
                         <segue destination="VjR-Au-bPb" kind="unwind" identifier="editEmployeeUnwind" unwindAction="unwindToEmployeeWith:" id="HxG-dT-4ky"/>
                         <segue destination="VjR-Au-bPb" kind="unwind" identifier="newEmployeeUnwind" unwindAction="unwindToEmployeesWith:" id="dvn-8R-8sO"/>
                     </connections>
@@ -381,7 +414,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="roleName" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="rJE-e2-Bgc">
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="roleName" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="rJE-e2-Bgc">
                                             <rect key="frame" x="16" y="12" width="74" height="20.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>

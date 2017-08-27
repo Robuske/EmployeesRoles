@@ -17,10 +17,19 @@ class EditEmployeeTableViewController: UITableViewController {
 	private let newEmployeeUnwindSegue = "newEmployeeUnwind"
 	private let editEmployeeUnwindSegue = "editEmployeeUnwind"
 	
-	// MARK: - View Methods
+	@IBOutlet private weak var nameField: UITextField!
+	@IBOutlet private weak var salaryField: UITextField!
 	
-	override func viewWillAppear(_ animated: Bool) {
-		super.viewWillAppear(animated)
+	@IBOutlet private weak var birthdatePicker: UIDatePicker!
+	
+	@IBOutlet private weak var birthdateLabel: UILabel!
+	@IBOutlet private weak var roleNameLabel: UILabel!
+	
+	// MARK: - View Methods
+	override func viewDidLoad() {
+		super.viewDidLoad()
+		
+		self.birthdatePicker.maximumDate = Date()
 		
 		self.setHideKeyboardOnTap()
 		
@@ -28,11 +37,11 @@ class EditEmployeeTableViewController: UITableViewController {
 		self.refillData()
 	}
 	
-	override func viewWillDisappear(_ animated: Bool) {
-		super.viewWillDisappear(animated)
-		
-		self.employee = nil
-	}
+//	override func viewWillDisappear(_ animated: Bool) {
+//		super.viewWillDisappear(animated)
+//
+//		self.employee = nil
+//	}
 	
 
     // MARK: - Private Methods
@@ -50,7 +59,31 @@ class EditEmployeeTableViewController: UITableViewController {
 	}
 	
 	private func refillData() {
-		// TODO: here
+		if let currentEmployee = self.employee {
+			
+			self.nameField.text = currentEmployee.name
+			self.salaryField.text = String(currentEmployee.salary)
+			
+			self.birthdatePicker.date = currentEmployee.birthdate
+			
+			self.updateBirthdateLabel()
+			self.roleNameLabel.text = currentEmployee.role.name
+			
+		} else {
+			
+			self.nameField.text = ""
+			self.salaryField.text = ""
+			
+			self.birthdatePicker.date = Date()
+			
+			self.updateBirthdateLabel()
+			self.roleNameLabel.text = ""
+			
+		}
+	}
+	
+	private func updateBirthdateLabel() {
+		self.birthdateLabel.text = DateFormatter.localizedString(from: self.birthdatePicker.date, dateStyle: .short, timeStyle: .none)
 	}
 	
 	private func setHideKeyboardOnTap() {

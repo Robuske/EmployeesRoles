@@ -22,8 +22,8 @@ class EditRoleTableViewController: UITableViewController {
 	
 	// MARK: - View Methods
 	
-	override func viewWillAppear(_ animated: Bool) {
-		super.viewWillAppear(animated)
+	override func viewDidLoad() {
+		super.viewDidLoad()
 		
 		self.setHideKeyboardOnTap()
 		
@@ -31,11 +31,11 @@ class EditRoleTableViewController: UITableViewController {
 		self.refillData()
 	}
 	
-	override func viewWillDisappear(_ animated: Bool) {
-		super.viewWillDisappear(animated)
-		
-		self.role = nil
-	}
+//	override func viewWillDisappear(_ animated: Bool) {
+//		super.viewWillDisappear(animated)
+//		
+//		self.role = nil
+//	}
 	
 	// MARK: - Private Methods
 	
@@ -53,11 +53,15 @@ class EditRoleTableViewController: UITableViewController {
 	
 	private func refillData() {
 		if let currentRole = self.role {
+			
 			self.roleTextField.text = currentRole.name
 			self.salaryTextField.text = String(currentRole.salary)
+			
 		} else {
+			
 			self.roleTextField.text = ""
 			self.salaryTextField.text = ""
+			
 		}
 	}
 	
