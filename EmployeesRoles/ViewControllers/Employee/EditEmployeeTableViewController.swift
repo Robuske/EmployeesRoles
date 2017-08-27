@@ -14,8 +14,8 @@ class EditEmployeeTableViewController: UITableViewController {
 	
 	private var edit = false
 	
-	private let newEmployeeUnwindSegue = ""
-	private let editEmployeeUnwindSegue = ""
+	private let newEmployeeUnwindSegue = "newEmployeeUnwind"
+	private let editEmployeeUnwindSegue = "editEmployeeUnwind"
 	
 	// MARK: - View Methods
 	

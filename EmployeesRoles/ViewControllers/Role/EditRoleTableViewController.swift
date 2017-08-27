@@ -14,8 +14,8 @@ class EditRoleTableViewController: UITableViewController {
 
 	private var edit = false
 	
-	private let newRoleUnwindSegue = "fromNewRoleToRoles"
-	private let editRoleUnwindSegue = "fromNewRoleToRole"
+	private let newRoleUnwindSegue = "newRoleUnwind"
+	private let editRoleUnwindSegue = "editRoleUnwind"
 	
 	@IBOutlet private weak var roleTextField: UITextField!
 	@IBOutlet private weak var salaryTextField: UITextField!

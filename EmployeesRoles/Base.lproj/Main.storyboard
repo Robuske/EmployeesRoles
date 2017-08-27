@@ -107,8 +107,8 @@
                     <connections>
                         <outlet property="roleTextField" destination="9Tz-zS-EeI" id="tZg-aS-mzj"/>
                         <outlet property="salaryTextField" destination="j28-7O-wMp" id="zyR-Gu-CjC"/>
-                        <segue destination="t7R-3E-FKa" kind="unwind" identifier="fromNewRoleToRole" unwindAction="unwindToRoleWith:" id="qkj-er-smg"/>
-                        <segue destination="t7R-3E-FKa" kind="unwind" identifier="fromNewRoleToRoles" unwindAction="unwindToRolesWith:" id="bhn-FB-TzO"/>
+                        <segue destination="t7R-3E-FKa" kind="unwind" identifier="editRoleUnwind" unwindAction="unwindToRoleWith:" id="qkj-er-smg"/>
+                        <segue destination="t7R-3E-FKa" kind="unwind" identifier="newRoleUnwind" unwindAction="unwindToRolesWith:" id="bhn-FB-TzO"/>
                     </connections>
                 </tableViewController>
                 <exit id="t7R-3E-FKa" userLabel="Exit" sceneMemberID="exit"/>
@@ -266,8 +266,13 @@
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="iMq-Sc-BCg"/>
                         <barButtonItem key="rightBarButtonItem" style="done" systemItem="save" id="S3N-WC-xR8"/>
                     </navigationItem>
+                    <connections>
+                        <segue destination="VjR-Au-bPb" kind="unwind" identifier="editEmployeeUnwind" unwindAction="unwindToEmployeeWith:" id="HxG-dT-4ky"/>
+                        <segue destination="VjR-Au-bPb" kind="unwind" identifier="newEmployeeUnwind" unwindAction="unwindToEmployeesWith:" id="dvn-8R-8sO"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DvJ-uP-pYY" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="VjR-Au-bPb" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="5153" y="1218"/>
         </scene>
@@ -724,6 +729,6 @@
         <segue reference="YqK-Hu-Njq"/>
         <segue reference="uEf-aL-hgj"/>
         <segue reference="HLG-fb-AKS"/>
-        <segue reference="Fg9-NZ-K2Z"/>
+        <segue reference="Yy1-S8-ZBr"/>
     </inferredMetricsTieBreakers>
 </document>
