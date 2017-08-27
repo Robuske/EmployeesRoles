@@ -291,6 +291,9 @@
                                                     <date key="maximumDate" timeIntervalSinceReferenceDate="567946800">
                                                         <!--2018-12-31 11:00:00 AM +0000-->
                                                     </date>
+                                                    <connections>
+                                                        <action selector="birthdateDidChange:" destination="xZ7-Qa-Wfz" eventType="valueChanged" id="hdy-nX-beO"/>
+                                                    </connections>
                                                 </datePicker>
                                             </subviews>
                                             <constraints>
@@ -374,12 +377,12 @@
                     <navigationItem key="navigationItem" title="New Employee" id="JOx-pX-YhZ">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="iMq-Sc-BCg">
                             <connections>
-                                <action selector="cancelRole:" destination="xZ7-Qa-Wfz" id="p8S-u7-Yee"/>
+                                <action selector="cancelEmployee:" destination="xZ7-Qa-Wfz" id="p8S-u7-Yee"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" style="done" systemItem="save" id="S3N-WC-xR8">
                             <connections>
-                                <action selector="saveRole:" destination="xZ7-Qa-Wfz" id="H3n-ea-3Yi"/>
+                                <action selector="saveEmployee:" destination="xZ7-Qa-Wfz" id="H3n-ea-3Yi"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -897,7 +900,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="alz-zk-MMs"/>
+        <segue reference="YqK-Hu-Njq"/>
         <segue reference="uEf-aL-hgj"/>
         <segue reference="HLG-fb-AKS"/>
         <segue reference="Yy1-S8-ZBr"/>

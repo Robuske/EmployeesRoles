@@ -8,10 +8,6 @@
 
 import UIKit
 
-protocol ReloadMasterViewDelegate: class {
-	func reloadData()
-}
-
 class RolesViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, ReloadMasterViewDelegate {
 
 	private let roleCellIdentifier = "roleCell"

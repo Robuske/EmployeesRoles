@@ -8,14 +8,18 @@
 
 import UIKit
 
-class EditEmployeeTableViewController: UITableViewController {
+class EditEmployeeTableViewController: UITableViewController, NewOrEditProtocol, UITextFieldDelegate {
 
 	var employee: Employee?
+	var employeeRole: Role?
 	
-	private var edit = false
+	var edit = false
 	
-	private let newEmployeeUnwindSegue = "newEmployeeUnwind"
-	private let editEmployeeUnwindSegue = "editEmployeeUnwind"
+	let newTitle = NSLocalizedString("newEmployee", tableName: "Localizable", bundle: Bundle.main, value: "New Employee", comment: "Title for the new employee screen")
+	let editTitle = NSLocalizedString("editEmployee", tableName: "Localizable", bundle: Bundle.main, value: "Edit Employee", comment: "Title for the edit employee screen")
+	
+	let newUnwindSegue = "newEmployeeUnwind"
+	let editUnwindSegue = "editEmployeeUnwind"
 	
 	@IBOutlet private weak var nameField: UITextField!
 	@IBOutlet private weak var salaryField: UITextField!
@@ -29,34 +33,19 @@ class EditEmployeeTableViewController: UITableViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
+		self.nameField.delegate = self
+		self.salaryField.delegate = self
+		
 		self.birthdatePicker.maximumDate = Date()
 		
 		self.setHideKeyboardOnTap()
 		
-		self.editOrNew()
+		self.newOrEdit(self.employee)
 		self.refillData()
 	}
 	
-//	override func viewWillDisappear(_ animated: Bool) {
-//		super.viewWillDisappear(animated)
-//
-//		self.employee = nil
-//	}
-	
 
     // MARK: - Private Methods
-	
-	private func editOrNew() {
-		if self.employee == nil {
-			self.edit = false
-			
-			self.navigationItem.title = NSLocalizedString("newEmployee", tableName: "Localizable", bundle: Bundle.main, value: "New Employee", comment: "Title for the new employee screen")
-		} else {
-			self.edit = true
-			
-			self.navigationItem.title = NSLocalizedString("editEmployee", tableName: "Localizable", bundle: Bundle.main, value: "Edit Employee", comment: "Title for the edit employee screen")
-		}
-	}
 	
 	private func refillData() {
 		if let currentEmployee = self.employee {
@@ -66,7 +55,7 @@ class EditEmployeeTableViewController: UITableViewController {
 			
 			self.birthdatePicker.date = currentEmployee.birthdate
 			
-			self.updateBirthdateLabel()
+			//self.updateBirthdateLabel()
 			self.roleNameLabel.text = currentEmployee.role.name
 			
 		} else {
@@ -76,7 +65,7 @@ class EditEmployeeTableViewController: UITableViewController {
 			
 			self.birthdatePicker.date = Date()
 			
-			self.updateBirthdateLabel()
+			//self.updateBirthdateLabel()
 			self.roleNameLabel.text = ""
 			
 		}
@@ -86,30 +75,33 @@ class EditEmployeeTableViewController: UITableViewController {
 		self.birthdateLabel.text = DateFormatter.localizedString(from: self.birthdatePicker.date, dateStyle: .short, timeStyle: .none)
 	}
 	
-	private func setHideKeyboardOnTap() {
-		let tap: UITapGestureRecognizer =
-			UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard) )
-		tap.cancelsTouchesInView = false
-		
-		view.addGestureRecognizer(tap)
-	}
-	
-	@objc
-	private func dismissKeyboard() {
-		view.endEditing(true)
-	}
-	
 	private func testFilledFields() -> Bool {
-		return false // TODO: here
+		let nameTest = self.nameField.text != ""
+		let salaryTest = self.salaryField.text != ""
+		let roleTest = self.employeeRole != nil
+		
+		return nameTest && salaryTest && roleTest
+	}
+	
+	// MARK: - Other Methods
+	
+	func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+		self.dismissKeyboard()
+		return true
+	}
+	
+	
+	@IBAction func birthdateDidChange(_ sender: UIDatePicker) {
+		self.updateBirthdateLabel()
 	}
 
     // MARK: - Navigation
 
-	@IBAction func cancelRole(_ sender: UIBarButtonItem) {
+	@IBAction func cancelEmployee(_ sender: UIBarButtonItem) {
 		self.performCorrectSegue()
 	}
 	
-	@IBAction func saveRole(_ sender: UIBarButtonItem) {
+	@IBAction func saveEmployee(_ sender: UIBarButtonItem) {
 		if self.testFilledFields() {
 			
 			// TODO: Here
@@ -117,17 +109,11 @@ class EditEmployeeTableViewController: UITableViewController {
 		}
 	}
 	
-	private func performCorrectSegue() {
-		if self.edit {
-			self.performSegue(withIdentifier: self.editEmployeeUnwindSegue, sender: self)
-		} else {
-			self.performSegue(withIdentifier: self.newEmployeeUnwindSegue, sender: self)
+	
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+		if let employeeTableViewController = segue.destination as? EmployeeTableViewController {
+			employeeTableViewController.employee = self.employee
 		}
-	}
-	
-	
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//
-//    }
+    }
 
 }

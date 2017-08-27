@@ -8,14 +8,18 @@
 
 import UIKit
 
-class EditRoleTableViewController: UITableViewController {
+class EditRoleTableViewController: UITableViewController, NewOrEditProtocol, UITextFieldDelegate {
 	
 	var role: Role?
 
-	private var edit = false
+	var edit = false
 	
-	private let newRoleUnwindSegue = "newRoleUnwind"
-	private let editRoleUnwindSegue = "editRoleUnwind"
+	let newTitle = NSLocalizedString("newRole", tableName: "Localizable", bundle: Bundle.main, value: "New Role", comment: "Title for the new role screen")
+	
+	let editTitle = NSLocalizedString("editRole", tableName: "Localizable", bundle: Bundle.main, value: "Edit Role", comment: "Title for the edit role screen")
+	
+	let newUnwindSegue = "newRoleUnwind"
+	let editUnwindSegue = "editRoleUnwind"
 	
 	@IBOutlet private weak var roleTextField: UITextField!
 	@IBOutlet private weak var salaryTextField: UITextField!
@@ -25,31 +29,16 @@ class EditRoleTableViewController: UITableViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
+		self.roleTextField.delegate = self
+		self.salaryTextField.delegate = self
+		
 		self.setHideKeyboardOnTap()
 		
-		self.editOrNew()
+		self.newOrEdit(self.role)
 		self.refillData()
 	}
 	
-//	override func viewWillDisappear(_ animated: Bool) {
-//		super.viewWillDisappear(animated)
-//		
-//		self.role = nil
-//	}
-	
 	// MARK: - Private Methods
-	
-	private func editOrNew() {
-		if self.role == nil {
-			self.edit = false
-			
-			self.navigationItem.title = NSLocalizedString("newRole", tableName: "Localizable", bundle: Bundle.main, value: "New Role", comment: "Title for the new role screen")
-		} else {
-			self.edit = true
-			
-			self.navigationItem.title = NSLocalizedString("editRole", tableName: "Localizable", bundle: Bundle.main, value: "Edit Role", comment: "Title for the edit role screen")
-		}
-	}
 	
 	private func refillData() {
 		if let currentRole = self.role {
@@ -65,21 +54,15 @@ class EditRoleTableViewController: UITableViewController {
 		}
 	}
 	
-	private func setHideKeyboardOnTap() {
-		let tap: UITapGestureRecognizer =
-			UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard) )
-		tap.cancelsTouchesInView = false
-		
-		view.addGestureRecognizer(tap)
-	}
-	
-	@objc
-	private func dismissKeyboard() {
-		view.endEditing(true)
-	}
-	
 	private func testFilledFields() -> Bool {
 		return self.roleTextField.text != "" && self.salaryTextField.text != ""
+	}
+	
+	// MARK: - Other Methods
+	
+	func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+		self.dismissKeyboard()
+		return true
 	}
 	
 	// MARK: - Navigation
@@ -113,14 +96,6 @@ class EditRoleTableViewController: UITableViewController {
 			_ = DataLayer.instance.save(company)
 			
 			self.performCorrectSegue()
-		}
-	}
-	
-	private func performCorrectSegue() {
-		if self.edit {
-			self.performSegue(withIdentifier: self.editRoleUnwindSegue, sender: self)
-		} else {
-			self.performSegue(withIdentifier: self.newRoleUnwindSegue, sender: self)
 		}
 	}
 
