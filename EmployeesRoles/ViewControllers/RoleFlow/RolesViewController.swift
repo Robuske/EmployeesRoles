@@ -8,10 +8,11 @@
 
 import UIKit
 
-class RolesViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, ReloadMasterViewDelegate {
+class RolesViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, ReloadMasterViewDelegate, RolesDataProtocol {
+
+	var roles = [Role]()
 
 	private let roleCellIdentifier = "roleCell"
-	private var roles = [Role]()
 	
 	@IBOutlet private weak var table: UITableView!
 	
@@ -22,10 +23,7 @@ class RolesViewController: UIViewController, UITableViewDataSource, UITableViewD
     }
 	
 	func reloadData() {
-		let company = DataLayer.instance.loadCompany()
-		self.roles = company.roles.sorted { $0.name < $1.name }
-		
-		self.table.reloadSections(IndexSet([0]), with: .automatic)
+		self.reloadData(in: table)
 	}
 	
 	// MARK: - Table view data source
@@ -39,8 +37,7 @@ class RolesViewController: UIViewController, UITableViewDataSource, UITableViewD
 		
 		let role = self.roles[indexPath.row]
 		
-		cell.textLabel?.text = role.name
-		cell.detailTextLabel?.text = NumberFormatter.localizedString(from: NSNumber(value: role.salary), number: .currency)
+		self.format(cell, with: role)
 		
 		return cell
 	}

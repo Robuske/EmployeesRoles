@@ -404,7 +404,7 @@
         <!--Role Selector-->
         <scene sceneID="lob-Z7-A1s">
             <objects>
-                <tableViewController title="Role" id="0Ip-Az-xTO" userLabel="Role Selector" sceneMemberID="viewController">
+                <tableViewController title="Role" id="0Ip-Az-xTO" userLabel="Role Selector" customClass="RoleSelectorTableViewController" customModule="EmployeesRoles" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" keyboardDismissMode="interactive" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="14" sectionFooterHeight="14" id="C2K-b0-9Q8">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

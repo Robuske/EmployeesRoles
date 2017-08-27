@@ -43,7 +43,6 @@ class EditEmployeeTableViewController: UITableViewController, NewOrEditProtocol,
 		self.newOrEdit(with: self.employee)
 		self.refillData()
 	}
-	
 
     // MARK: - Private Methods
 	
@@ -56,7 +55,8 @@ class EditEmployeeTableViewController: UITableViewController, NewOrEditProtocol,
 			self.birthdatePicker.date = currentEmployee.birthdate
 			
 			self.updateBirthdateLabel()
-			self.roleNameLabel.text = currentEmployee.role.name
+			
+			self.employeeRole = currentEmployee.role
 			
 		} else {
 			
@@ -66,8 +66,17 @@ class EditEmployeeTableViewController: UITableViewController, NewOrEditProtocol,
 			self.birthdatePicker.date = Date()
 			
 			self.updateBirthdateLabel()
-			self.roleNameLabel.text = ""
 			
+		}
+		
+		self.refillRoleData()
+	}
+	
+	private func refillRoleData() {
+		if let currentEmployeeRole = self.employeeRole {
+			self.roleNameLabel.text = currentEmployeeRole.name
+		} else {
+			self.roleNameLabel.text = ""
 		}
 	}
 	
@@ -109,10 +118,15 @@ class EditEmployeeTableViewController: UITableViewController, NewOrEditProtocol,
 		}
 	}
 	
-	
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 		if let employeeTableViewController = segue.destination as? EmployeeTableViewController {
+			
 			employeeTableViewController.employee = self.employee
+			
+		} else if let roleSelectorController = segue.destination as? RoleSelectorTableViewController {
+			
+			roleSelectorController.selectedRole = self.employeeRole
+			
 		}
     }
 

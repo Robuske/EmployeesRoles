@@ -12,6 +12,7 @@
 		E73BF2B01F523C2D00613247 /* EditEmployeeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E73BF2AF1F523C2D00613247 /* EditEmployeeTableViewController.swift */; };
 		E7D903A61F5273B0003DF6B5 /* Shared.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D903A51F5273B0003DF6B5 /* Shared.swift */; };
 		E7D903A81F527563003DF6B5 /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D903A71F527563003DF6B5 /* UIViewControllerExtension.swift */; };
+		E7D903AB1F528E89003DF6B5 /* RoleSelectorTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D903AA1F528E89003DF6B5 /* RoleSelectorTableViewController.swift */; };
 		FC4CC7F71F50AB4900818ADB /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = FC4CC7F91F50AB4900818ADB /* Localizable.strings */; };
 		FC4CC7FC1F50AB4A00818ADB /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = FC4CC7FE1F50AB4A00818ADB /* InfoPlist.strings */; };
 		FC4CC8041F50B80E00818ADB /* EditRoleTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC4CC8031F50B80E00818ADB /* EditRoleTableViewController.swift */; };
@@ -37,6 +38,7 @@
 		E73BF2AF1F523C2D00613247 /* EditEmployeeTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditEmployeeTableViewController.swift; sourceTree = "<group>"; };
 		E7D903A51F5273B0003DF6B5 /* Shared.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shared.swift; sourceTree = "<group>"; };
 		E7D903A71F527563003DF6B5 /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
+		E7D903AA1F528E89003DF6B5 /* RoleSelectorTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoleSelectorTableViewController.swift; sourceTree = "<group>"; };
 		FC4CC7F31F50A8C400818ADB /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Main.strings"; sourceTree = "<group>"; };
 		FC4CC7F41F50A8C400818ADB /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
 		FC4CC7F81F50AB4900818ADB /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Localizable.strings"; sourceTree = "<group>"; };
@@ -73,24 +75,36 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		E7F788F11F52348300A62502 /* Role */ = {
+		E7D903A91F528DE0003DF6B5 /* ExtensionsAndProtocols */ = {
+			isa = PBXGroup;
+			children = (
+				E7D903A51F5273B0003DF6B5 /* Shared.swift */,
+				FCEAAE2B1F4F79070031E1AF /* NewSplitViewController.swift */,
+				E7D903A71F527563003DF6B5 /* UIViewControllerExtension.swift */,
+				E71B7D201F511DB000A28F1C /* StringExtension.swift */,
+			);
+			path = ExtensionsAndProtocols;
+			sourceTree = "<group>";
+		};
+		E7F788F11F52348300A62502 /* RoleFlow */ = {
 			isa = PBXGroup;
 			children = (
 				FC8D3BB71F4CF18300305EF5 /* RolesViewController.swift */,
 				FC4CC8051F50D99200818ADB /* RoleTableViewController.swift */,
 				FC4CC8031F50B80E00818ADB /* EditRoleTableViewController.swift */,
 			);
-			path = Role;
+			path = RoleFlow;
 			sourceTree = "<group>";
 		};
-		E7F788F21F52348D00A62502 /* Employee */ = {
+		E7F788F21F52348D00A62502 /* EmployeeFlow */ = {
 			isa = PBXGroup;
 			children = (
 				FC8D3BB91F4CF19300305EF5 /* EmployeesViewController.swift */,
 				E73BF2AD1F523C1600613247 /* EmployeeTableViewController.swift */,
 				E73BF2AF1F523C2D00613247 /* EditEmployeeTableViewController.swift */,
+				E7D903AA1F528E89003DF6B5 /* RoleSelectorTableViewController.swift */,
 			);
-			path = Employee;
+			path = EmployeeFlow;
 			sourceTree = "<group>";
 		};
 		FC60C3BF1F5094970044756E /* Frameworks */ = {
@@ -116,8 +130,8 @@
 		FC8D3B941F4CEE1600305EF5 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				E7F788F11F52348300A62502 /* Role */,
-				E7F788F21F52348D00A62502 /* Employee */,
+				E7F788F11F52348300A62502 /* RoleFlow */,
+				E7F788F21F52348D00A62502 /* EmployeeFlow */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -155,15 +169,12 @@
 		FCE5C1D21F4B6B0F007F4EF2 /* Support */ = {
 			isa = PBXGroup;
 			children = (
+				E7D903A91F528DE0003DF6B5 /* ExtensionsAndProtocols */,
 				FC4CC7FE1F50AB4A00818ADB /* InfoPlist.strings */,
 				FC4CC7F91F50AB4900818ADB /* Localizable.strings */,
-				E7D903A51F5273B0003DF6B5 /* Shared.swift */,
-				FCEAAE2B1F4F79070031E1AF /* NewSplitViewController.swift */,
-				E7D903A71F527563003DF6B5 /* UIViewControllerExtension.swift */,
-				E71B7D201F511DB000A28F1C /* StringExtension.swift */,
 				FCE5C1BE1F4B6951007F4EF2 /* AppDelegate.swift */,
-				FCE5C1C71F4B6951007F4EF2 /* Assets.xcassets */,
 				FCE5C1CC1F4B6951007F4EF2 /* Info.plist */,
+				FCE5C1C71F4B6951007F4EF2 /* Assets.xcassets */,
 			);
 			path = Support;
 			sourceTree = "<group>";
@@ -280,6 +291,7 @@
 				FCE5C1BF1F4B6951007F4EF2 /* AppDelegate.swift in Sources */,
 				FC8D3B931F4CCB5600305EF5 /* Company.swift in Sources */,
 				E71B7D211F511DB000A28F1C /* StringExtension.swift in Sources */,
+				E7D903AB1F528E89003DF6B5 /* RoleSelectorTableViewController.swift in Sources */,
 				FC8D3BBA1F4CF19300305EF5 /* EmployeesViewController.swift in Sources */,
 				FC8D3BB81F4CF18300305EF5 /* RolesViewController.swift in Sources */,
 				FC86813A1F4B742E00FD6875 /* Role.swift in Sources */,

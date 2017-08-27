@@ -12,6 +12,34 @@ protocol ReloadMasterViewDelegate: class {
 	func reloadData()
 }
 
+// MARK: RolesDataProtocol
+
+protocol RolesDataProtocol: class {
+	var roles: [Role] { get set }
+	
+	func reloadData(in tableView: UITableView)
+	func format(_ cell: UITableViewCell, with role: Role)
+}
+
+extension RolesDataProtocol where Self: UIViewController {
+	
+	func reloadData(in tableView: UITableView) {
+		let company = DataLayer.instance.loadCompany()
+		self.roles = company.roles.sorted { $0.name < $1.name }
+		
+		tableView.reloadSections(IndexSet([0]), with: .automatic)
+	}
+	
+	func format(_ cell: UITableViewCell, with role: Role) {
+		
+		cell.textLabel?.text = role.name
+		cell.detailTextLabel?.text = NumberFormatter.localizedString(from: NSNumber(value: role.salary), number: .currency)
+		
+	}
+}
+
+// MARK: NewOrEditProtocol
+
 protocol NewOrEditProtocol: class {
 	var edit: Bool { get set }
 	
@@ -48,6 +76,8 @@ extension NewOrEditProtocol where Self: UIViewController {
 	}
 	
 }
+
+// MARK: ShowDetailProtocol
 
 // swiftlint:disable:next strict_fileprivate
 fileprivate final class ShowDetailWrapper {
