@@ -16,6 +16,12 @@ class EmployeeTableViewController: UITableViewController {
 	
 	private let editEmployeeSegue = "editEmployee"
 	
+	@IBOutlet weak var employeeName: UILabel!
+	@IBOutlet weak var employeeBirthdate: UILabel!
+	@IBOutlet weak var employeeRole: UILabel!
+	@IBOutlet weak var employeeSalary: UILabel!
+	
+	
 	override func viewDidLoad() {
         super.viewDidLoad()
 		

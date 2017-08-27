@@ -263,8 +263,16 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="New Employee" id="JOx-pX-YhZ">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="iMq-Sc-BCg"/>
-                        <barButtonItem key="rightBarButtonItem" style="done" systemItem="save" id="S3N-WC-xR8"/>
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="iMq-Sc-BCg">
+                            <connections>
+                                <action selector="cancelRole:" destination="xZ7-Qa-Wfz" id="p8S-u7-Yee"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" style="done" systemItem="save" id="S3N-WC-xR8">
+                            <connections>
+                                <action selector="saveRole:" destination="xZ7-Qa-Wfz" id="H3n-ea-3Yi"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <segue destination="VjR-Au-bPb" kind="unwind" identifier="editEmployeeUnwind" unwindAction="unwindToEmployeeWith:" id="HxG-dT-4ky"/>
@@ -551,7 +559,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <sections>
-                            <tableViewSection id="kKp-Vg-gjC">
+                            <tableViewSection id="kKp-Vg-gjC" userLabel="Person Section">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="Dod-hF-K9D" userLabel="Name Cell">
                                         <rect key="frame" x="0.0" y="35" width="375" height="44"/>
@@ -621,7 +629,7 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
-                            <tableViewSection id="19Q-C0-UO4">
+                            <tableViewSection id="19Q-C0-UO4" userLabel="Job Section">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="Ezo-1C-mEm" userLabel="Role Cell">
                                         <rect key="frame" x="0.0" y="151" width="375" height="44"/>
@@ -699,6 +707,10 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="Employee" id="IW8-LC-wxf"/>
                     <connections>
+                        <outlet property="employeeBirthdate" destination="f0l-TK-up2" id="oZ5-Go-vjA"/>
+                        <outlet property="employeeName" destination="TwL-po-vO0" id="NPf-TI-db9"/>
+                        <outlet property="employeeRole" destination="gZQ-WH-aso" id="yf7-8V-Me1"/>
+                        <outlet property="employeeSalary" destination="Z0P-SX-8eB" id="bW3-Gh-0xf"/>
                         <segue destination="sJz-Oj-hc9" kind="presentation" identifier="editEmployee" modalPresentationStyle="currentContext" modalTransitionStyle="crossDissolve" id="alz-zk-MMs"/>
                     </connections>
                 </tableViewController>
@@ -726,7 +738,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="YqK-Hu-Njq"/>
+        <segue reference="alz-zk-MMs"/>
         <segue reference="uEf-aL-hgj"/>
         <segue reference="HLG-fb-AKS"/>
         <segue reference="Yy1-S8-ZBr"/>
