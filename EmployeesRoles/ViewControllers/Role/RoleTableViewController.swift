@@ -31,6 +31,7 @@ class RoleTableViewController: UITableViewController {
 	private func refillData() {
 		if let currentRole = self.role {
 			self.title = currentRole.name
+			
 			self.roleName.text = currentRole.name
 			self.roleSalary.text = NumberFormatter.localizedString(from: NSNumber(value: currentRole.salary), number: .currency)
 		}
@@ -65,7 +66,9 @@ class RoleTableViewController: UITableViewController {
 		
 		if let destinationNavigationController = segue.destination as? UINavigationController,
 			let editRoleTableViewController = destinationNavigationController.topViewController as? EditRoleTableViewController {
+			
 			editRoleTableViewController.role = self.role
+			
 		}
     }
 

@@ -16,10 +16,10 @@ class EmployeeTableViewController: UITableViewController {
 	
 	private let editEmployeeSegue = "editEmployee"
 	
-	@IBOutlet weak var employeeName: UILabel!
-	@IBOutlet weak var employeeBirthdate: UILabel!
-	@IBOutlet weak var employeeRole: UILabel!
-	@IBOutlet weak var employeeSalary: UILabel!
+	@IBOutlet private weak var employeeName: UILabel!
+	@IBOutlet private weak var employeeBirthdate: UILabel!
+	@IBOutlet private weak var employeeRole: UILabel!
+	@IBOutlet private weak var employeeSalary: UILabel!
 	
 	
 	override func viewDidLoad() {
@@ -34,7 +34,11 @@ class EmployeeTableViewController: UITableViewController {
 	private func refillData() {
 		if let currentEmployee = self.employee {
 			self.title = currentEmployee.name
-			// TODO: here
+			
+			self.employeeName.text = currentEmployee.name
+			self.employeeBirthdate.text = DateFormatter.localizedString(from: currentEmployee.birthdate, dateStyle: .short, timeStyle: .none)
+			self.employeeRole.text = currentEmployee.role.name
+			self.employeeSalary.text = NumberFormatter.localizedString(from: NSNumber(value: currentEmployee.salary), number: .currency)
 		}
 	}
 	
@@ -63,8 +67,15 @@ class EmployeeTableViewController: UITableViewController {
 		self.delegate?.reloadData()
 	}
 	
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//
-//    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+		
+		if let destinationNavigationController = segue.destination as? UINavigationController,
+			let editEmployeeTableViewController = destinationNavigationController.topViewController as? EditEmployeeTableViewController {
+			
+			editEmployeeTableViewController.employee = self.employee
+			
+		}
+		
+    }
 
 }
