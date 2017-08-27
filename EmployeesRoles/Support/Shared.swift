@@ -21,13 +21,13 @@ protocol NewOrEditProtocol: class {
 	var newUnwindSegue: String { get }
 	var editUnwindSegue: String { get }
 	
-	func newOrEdit(_ editObject: Any?)
+	func newOrEdit(with editObject: Any?)
 	func performCorrectSegue()
 }
 
 extension NewOrEditProtocol where Self: UIViewController {
 	
-	func newOrEdit(_ editObject: Any?) {
+	func newOrEdit(with editObject: Any?) {
 		if editObject == nil {
 			self.edit = false
 			self.navigationItem.title = self.newTitle
@@ -44,6 +44,51 @@ extension NewOrEditProtocol where Self: UIViewController {
 			self.performSegue(withIdentifier: self.editUnwindSegue, sender: self)
 		} else {
 			self.performSegue(withIdentifier: self.newUnwindSegue, sender: self)
+		}
+	}
+	
+}
+
+// swiftlint:disable:next strict_fileprivate
+fileprivate final class ShowDetailWrapper {
+	
+	static let instance = ShowDetailWrapper()
+	
+	weak var delegate: ShowDetailProtocol?
+	
+	private init() {}
+	
+	// Protocol Extensions can't have @objc methods
+	@objc
+	func editObject() {
+		if let viewController = delegate as? UIViewController {
+			viewController.performSegue(withIdentifier: self.delegate!.editSegue, sender: self.delegate)
+		}
+	}
+	
+}
+
+protocol ShowDetailProtocol: class {
+	
+	var editSegue: String { get }
+	
+	func testIfShouldShow(with testObject: Any?)
+}
+
+extension ShowDetailProtocol where Self: UIViewController {
+	
+	func testIfShouldShow(with testObject: Any?) {
+		let objectIsNil = testObject == nil
+		
+		self.view.isHidden = objectIsNil
+		self.title = ""
+		
+		if objectIsNil {
+			self.navigationItem.rightBarButtonItem = nil
+		} else {
+			ShowDetailWrapper.instance.delegate = self
+			
+			self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .edit, target: ShowDetailWrapper.instance, action: #selector(ShowDetailWrapper.editObject))
 		}
 	}
 	

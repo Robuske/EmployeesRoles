@@ -8,13 +8,13 @@
 
 import UIKit
 
-class RoleTableViewController: UITableViewController {
+class RoleTableViewController: UITableViewController, ShowDetailProtocol {
+	
+	weak var delegate: ReloadMasterViewDelegate?
 
 	var role: Role?
 	
-	weak var delegate: ReloadMasterViewDelegate?
-	
-	private let editRoleSegue = "editRole"
+	let editSegue = "editRole"
 	
 	@IBOutlet private weak var roleName: UILabel!
 	@IBOutlet private weak var roleSalary: UILabel!
@@ -22,7 +22,7 @@ class RoleTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 		
-		self.testIfShouldShow()
+		self.testIfShouldShow(with: self.role)
 		self.refillData()
     }
 	
@@ -37,25 +37,7 @@ class RoleTableViewController: UITableViewController {
 		}
 	}
 	
-	private func testIfShouldShow() {
-		let roleIsNil = self.role == nil
-		
-		self.view.isHidden = roleIsNil
-		self.title = ""
-		
-		if roleIsNil {
-			self.navigationItem.rightBarButtonItem = nil
-		} else {
-			self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(editRole))
-		}
-	}
-	
     // MARK: - Navigation
-
-	@objc
-	private func editRole() {
-		self.performSegue(withIdentifier: self.editRoleSegue, sender: self)
-	}
 	
 	@IBAction func unwindToRole(with unwindSegue: UIStoryboardSegue) {
 		self.refillData()

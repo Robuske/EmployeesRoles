@@ -40,7 +40,7 @@ class EditEmployeeTableViewController: UITableViewController, NewOrEditProtocol,
 		
 		self.setHideKeyboardOnTap()
 		
-		self.newOrEdit(self.employee)
+		self.newOrEdit(with: self.employee)
 		self.refillData()
 	}
 	
@@ -55,7 +55,7 @@ class EditEmployeeTableViewController: UITableViewController, NewOrEditProtocol,
 			
 			self.birthdatePicker.date = currentEmployee.birthdate
 			
-			//self.updateBirthdateLabel()
+			self.updateBirthdateLabel()
 			self.roleNameLabel.text = currentEmployee.role.name
 			
 		} else {
@@ -65,7 +65,7 @@ class EditEmployeeTableViewController: UITableViewController, NewOrEditProtocol,
 			
 			self.birthdatePicker.date = Date()
 			
-			//self.updateBirthdateLabel()
+			self.updateBirthdateLabel()
 			self.roleNameLabel.text = ""
 			
 		}

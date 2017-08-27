@@ -34,7 +34,7 @@ class EditRoleTableViewController: UITableViewController, NewOrEditProtocol, UIT
 		
 		self.setHideKeyboardOnTap()
 		
-		self.newOrEdit(self.role)
+		self.newOrEdit(with: self.role)
 		self.refillData()
 	}
 	

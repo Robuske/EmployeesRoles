@@ -8,13 +8,13 @@
 
 import UIKit
 
-class EmployeeTableViewController: UITableViewController {
+class EmployeeTableViewController: UITableViewController, ShowDetailProtocol {
 
-	var employee: Employee?
-	
 	weak var delegate: ReloadMasterViewDelegate?
 	
-	private let editEmployeeSegue = "editEmployee"
+	var employee: Employee?
+	
+	let editSegue = "editEmployee"
 	
 	@IBOutlet private weak var employeeName: UILabel!
 	@IBOutlet private weak var employeeBirthdate: UILabel!
@@ -25,7 +25,7 @@ class EmployeeTableViewController: UITableViewController {
 	override func viewDidLoad() {
         super.viewDidLoad()
 		
-		self.testIfShouldShow()
+		self.testIfShouldShow(with: self.employee)
 		self.refillData()
     }
 	
@@ -41,26 +41,8 @@ class EmployeeTableViewController: UITableViewController {
 			self.employeeSalary.text = NumberFormatter.localizedString(from: NSNumber(value: currentEmployee.salary), number: .currency)
 		}
 	}
-	
-	private func testIfShouldShow() {
-		let employeeIsNil = self.employee == nil
-		
-		self.view.isHidden = employeeIsNil
-		self.title = ""
-		
-		if employeeIsNil {
-			self.navigationItem.rightBarButtonItem = nil
-		} else {
-			self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(editEmployee))
-		}
-	}
 
     // MARK: - Navigation
-
-	@objc
-	private func editEmployee() {
-		self.performSegue(withIdentifier: self.editEmployeeSegue, sender: self)
-	}
 	
 	@IBAction func unwindToEmployee(with unwindSegue: UIStoryboardSegue) {
 		self.refillData()
