@@ -210,7 +210,7 @@
         <!--New Employee-->
         <scene sceneID="N2X-WC-Ato">
             <objects>
-                <tableViewController id="xZ7-Qa-Wfz" sceneMemberID="viewController">
+                <tableViewController id="xZ7-Qa-Wfz" customClass="EditEmployeeTableViewController" customModule="EmployeesRoles" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="SJv-SH-MlK">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -528,7 +528,7 @@
         <!--Employee-->
         <scene sceneID="ZXH-Ux-q5X">
             <objects>
-                <tableViewController title="Employee" id="9Ss-eg-gTm" sceneMemberID="viewController">
+                <tableViewController title="Employee" id="9Ss-eg-gTm" customClass="EmployeeTableViewController" customModule="EmployeesRoles" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="SQM-cY-evX">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -597,7 +597,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="YqK-Hu-Njq"/>
+        <segue reference="alz-zk-MMs"/>
         <segue reference="uEf-aL-hgj"/>
         <segue reference="HLG-fb-AKS"/>
         <segue reference="Fg9-NZ-K2Z"/>

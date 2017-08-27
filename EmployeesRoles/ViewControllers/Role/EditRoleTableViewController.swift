@@ -9,30 +9,26 @@
 import UIKit
 
 class EditRoleTableViewController: UITableViewController {
-
-	private let newRoleUnwindSegue = "fromNewRoleToRoles"
-	private let editRoleUnwindSegue = "fromNewRoleToRole"
 	
 	var role: Role?
+
+	private var edit = false
+	
+	private let newRoleUnwindSegue = "fromNewRoleToRoles"
+	private let editRoleUnwindSegue = "fromNewRoleToRole"
 	
 	@IBOutlet private weak var roleTextField: UITextField!
 	@IBOutlet private weak var salaryTextField: UITextField!
 	
-	private var edit = false
-	
 	// MARK: - View Methods
 	
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
-
 	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(animated)
 		
 		self.setHideKeyboardOnTap()
 		
-		self.setUpEdit()
-		self.fillTextFields()
+		self.editOrNew()
+		self.refillData()
 	}
 	
 	override func viewWillDisappear(_ animated: Bool) {
@@ -41,23 +37,21 @@ class EditRoleTableViewController: UITableViewController {
 		self.role = nil
 	}
 	
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
+	// MARK: - Private Methods
 	
-	// MARK: - General Methods
-	
-	private func setUpEdit() {
+	private func editOrNew() {
 		if self.role == nil {
 			self.edit = false
+			
 			self.navigationItem.title = NSLocalizedString("newRole", tableName: "Localizable", bundle: Bundle.main, value: "New Role", comment: "Title for the new role screen")
 		} else {
 			self.edit = true
+			
 			self.navigationItem.title = NSLocalizedString("editRole", tableName: "Localizable", bundle: Bundle.main, value: "Edit Role", comment: "Title for the edit role screen")
 		}
 	}
 	
-	private func fillTextFields() {
+	private func refillData() {
 		if let currentRole = self.role {
 			self.roleTextField.text = currentRole.name
 			self.salaryTextField.text = String(currentRole.salary)
@@ -85,14 +79,6 @@ class EditRoleTableViewController: UITableViewController {
 	}
 	
 	// MARK: - Navigation
-	
-	private func performCorrectSegue() {
-		if self.edit {
-			self.performSegue(withIdentifier: self.editRoleUnwindSegue, sender: self)
-		} else {
-			self.performSegue(withIdentifier: self.newRoleUnwindSegue, sender: self)
-		}
-	}
 	
 	@IBAction func cancelRole(_ sender: UIBarButtonItem) {
 		self.performCorrectSegue()
@@ -123,6 +109,14 @@ class EditRoleTableViewController: UITableViewController {
 			_ = DataLayer.instance.save(company)
 			
 			self.performCorrectSegue()
+		}
+	}
+	
+	private func performCorrectSegue() {
+		if self.edit {
+			self.performSegue(withIdentifier: self.editRoleUnwindSegue, sender: self)
+		} else {
+			self.performSegue(withIdentifier: self.newRoleUnwindSegue, sender: self)
 		}
 	}
 
