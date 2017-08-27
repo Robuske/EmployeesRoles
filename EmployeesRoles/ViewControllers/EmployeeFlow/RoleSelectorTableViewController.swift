@@ -14,6 +14,7 @@ class RoleSelectorTableViewController: UITableViewController, RolesDataProtocol 
 	var roles = [Role]()
 	
 	private let roleCellIdentifier = "roleCell"
+	private let roleSelectorUnwindSegue = "roleSelectorUnwind"
 	
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,6 +49,8 @@ class RoleSelectorTableViewController: UITableViewController, RolesDataProtocol 
 		self.selectedRole = self.roles[indexPath.row]
 		
 		self.reloadData(in: self.tableView)
+		
+		self.performSegue(withIdentifier: self.roleSelectorUnwindSegue, sender: self)
 	}
 
     // MARK: - Navigation

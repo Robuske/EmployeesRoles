@@ -118,6 +118,10 @@ class EditEmployeeTableViewController: UITableViewController, NewOrEditProtocol,
 		}
 	}
 	
+	@IBAction func unwindToEditEmployee(with unwindSegue: UIStoryboardSegue) {
+		self.refillRoleData()
+	}
+	
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 		if let employeeTableViewController = segue.destination as? EmployeeTableViewController {
 			
