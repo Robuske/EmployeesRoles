@@ -32,6 +32,8 @@ class EditRoleTableViewController: UITableViewController, NewOrEditProtocol, UIT
 		self.roleTextField.delegate = self
 		self.salaryTextField.delegate = self
 		
+		self.setupAccessibility()
+		
 		self.setHideKeyboardOnTap()
 		
 		self.newOrEdit(with: self.role)
@@ -39,6 +41,12 @@ class EditRoleTableViewController: UITableViewController, NewOrEditProtocol, UIT
 	}
 	
 	// MARK: - Private Methods
+	
+	private func setupAccessibility() {
+		self.roleTextField.accessibilityLabel = NSLocalizedString("role", tableName: "Localizable", bundle: Bundle.main, value: "Role", comment: "Role accessibility label")
+		self.salaryTextField.accessibilityLabel = NSLocalizedString("salary", tableName: "Localizable", bundle: Bundle.main, value: "Salary", comment: "Salary accessibility label")
+	}
+	
 	
 	private func refillData() {
 		if let currentRole = self.role {

@@ -10,3 +10,11 @@
 /* Title for the new role screen */
 "newRole" = "Novo Cargo";
 
+/* Role accessibility label */
+"role" = "Cargo";
+
+/* Salary accessibility label */
+"salary" = "Salário";
+
+/* Name accessibility label */
+"name" = "Nome";

@@ -36,6 +36,8 @@ class EditEmployeeTableViewController: UITableViewController, NewOrEditProtocol,
 		self.nameField.delegate = self
 		self.salaryField.delegate = self
 		
+		self.setupAccessibility()
+		
 		self.birthdatePicker.maximumDate = Date()
 		
 		self.setHideKeyboardOnTap()
@@ -45,6 +47,11 @@ class EditEmployeeTableViewController: UITableViewController, NewOrEditProtocol,
 	}
 
     // MARK: - Private Methods
+	
+	private func setupAccessibility() {
+		self.nameField.accessibilityLabel = NSLocalizedString("name", tableName: "Localizable", bundle: Bundle.main, value: "Name", comment: "Name accessibility label")
+		self.salaryField.accessibilityLabel = NSLocalizedString("salary", tableName: "Localizable", bundle: Bundle.main, value: "Salary", comment: "Salary accessibility label")
+	}
 	
 	private func refillData() {
 		if let currentEmployee = self.employee {
