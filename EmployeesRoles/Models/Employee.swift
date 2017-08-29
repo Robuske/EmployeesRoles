@@ -49,8 +49,8 @@ struct Employee: Codable, Equatable, Hashable {
 
 extension Employee {
 	
-	private func intoRecord() -> CKRecord {
-		let recordId = CKRecordID(recordName: String(self.employeeId))
+	func intoRecord() -> CKRecord {
+		let recordId = CKRecordID(recordName: "\(self.typeName)\(self.employeeId)")
 		
 		let record = CKRecord(recordType: self.typeName, recordID: recordId)
 		

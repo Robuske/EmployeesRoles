@@ -71,15 +71,15 @@ extension IdProvider {
 		return record
 	}
 	
-	convenience init(record: CKRecord) {
-		
-		guard let companyId = record["nextCompanyId"] as? Int,
-			let employeeId = record["nextEmployeeId"] as? Int,
-			let roleId = record["nextRoleId"] as? Int else {
-			fatalError("Couldn't decode IdProvider record")
-		}
-		
-		self.init(nextCompanyId: UInt(companyId), nextEmployeeId: UInt(employeeId), nextRoleId: UInt(roleId))
-	}
+//	convenience init(record: CKRecord) {
+//
+//		guard let companyId = record["nextCompanyId"] as? Int,
+//			let employeeId = record["nextEmployeeId"] as? Int,
+//			let roleId = record["nextRoleId"] as? Int else {
+//			fatalError("Couldn't decode IdProvider record")
+//		}
+//
+//		self.init(nextCompanyId: UInt(companyId), nextEmployeeId: UInt(employeeId), nextRoleId: UInt(roleId))
+//	}
 	
 }

@@ -33,8 +33,8 @@ struct Role: Codable, Equatable, Hashable {
 }
 
 extension Role {
-	private func intoRecord() -> CKRecord {
-		let recordId = CKRecordID(recordName: String(self.roleId))
+	func intoRecord() -> CKRecord {
+		let recordId = CKRecordID(recordName: "\(self.typeName)\(self.roleId)")
 		
 		let record = CKRecord(recordType: self.typeName, recordID: recordId)
 		

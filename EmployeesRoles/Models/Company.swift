@@ -58,10 +58,15 @@ struct Company: Codable, Equatable, Hashable {
 
 extension Company {
 	
-	func intoRecord() -> CKRecord {
-		let recordId = CKRecordID(recordName: String(self.companyId))
-		
-		let record = CKRecord(recordType: self.typeName, recordID: recordId)
+	func getRecordId() -> CKRecordID {
+		return CKRecordID(recordName: "\(self.typeName)\(self.companyId)")
+	}
+	
+	func getRecord(recordId: CKRecordID) -> CKRecord {
+		return CKRecord(recordType: self.typeName, recordID: recordId)
+	}
+	
+	func setRecordValues(record: CKRecord) -> CKRecord {
 		
 		record[Company.CodingKeys.name.stringValue] = self.name as CKRecordValue
 		
