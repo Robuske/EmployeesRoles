@@ -73,7 +73,7 @@ extension Company: CloudKitProtocol {
 		var roleReferences = [CKReference]()
 		
 		for role in self.roles {
-			roleReferences.append(role.intoReference())
+			roleReferences.append(role.getReference())
 		}
 		
 		record[Company.CodingKeys.roles.stringValue] = roleReferences as CKRecordValue

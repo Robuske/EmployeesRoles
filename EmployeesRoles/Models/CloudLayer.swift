@@ -26,27 +26,6 @@ class CloudLayer {
 		self.publicDB = self.container.publicCloudDatabase
 	}
 	
-	private func save(_ idProvider: IdProvider) {
-		self.createOrUpdate(idProvider)
-	}
-	
-	private func save(_ employee: Employee) {
-		self.createOrUpdate(employee)
-	}
-	
-	private func save(_ role: Role) {
-		self.publicDB.save(role.intoRecord()) { record, error in
-			print("Saving \(role)")
-			
-			if let error = error {
-				print(error)
-				return
-			}
-			
-			print("Saved\n\(record!)")
-		}
-	}
-	
 	private func createOrUpdate(_ object: CloudKitProtocol) {
 		self.publicDB.fetch(withRecordID: object.getRecordId()) { record, error in
 			
@@ -77,6 +56,18 @@ class CloudLayer {
 			}
 			
 		}
+	}
+	
+	private func save(_ idProvider: IdProvider) {
+		self.createOrUpdate(idProvider)
+	}
+	
+	private func save(_ employee: Employee) {
+		self.createOrUpdate(employee)
+	}
+	
+	private func save(_ role: Role) {
+		self.createOrUpdate(role)
 	}
 	
 	private func save(_ company: Company) {

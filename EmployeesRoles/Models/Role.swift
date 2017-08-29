@@ -32,11 +32,16 @@ struct Role: Codable, Equatable, Hashable {
 	}
 }
 
-extension Role {
-	func intoRecord() -> CKRecord {
-		let recordId = CKRecordID(recordName: "\(self.typeName)\(self.roleId)")
-		
-		let record = CKRecord(recordType: self.typeName, recordID: recordId)
+extension Role: CloudKitProtocol {
+	func getRecordId() -> CKRecordID {
+		return CKRecordID(recordName: "\(self.typeName)\(self.roleId)")
+	}
+	
+	func getNewRecord(from recordId: CKRecordID) -> CKRecord {
+		return CKRecord(recordType: self.typeName, recordID: recordId)
+	}
+	
+	func setRecordValues(for record: CKRecord) -> CKRecord {
 		
 		record[Role.CodingKeys.name.stringValue] = NSString(string: self.name)
 		record[Role.CodingKeys.salary.stringValue] = NSString(string: String(self.salary))
@@ -44,8 +49,8 @@ extension Role {
 		return record
 	}
 	
-	func intoReference() -> CKReference {
-		let reference = CKReference(record: self.intoRecord(), action: .none)
+	func getReference() -> CKReference {
+		let reference = CKReference(recordID: self.getRecordId(), action: .none)
 		
 		return reference
 	}
