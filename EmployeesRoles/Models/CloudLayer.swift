@@ -31,16 +31,7 @@ class CloudLayer {
 	}
 	
 	private func save(_ employee: Employee) {
-		self.publicDB.save(employee.intoRecord()) { record, error in
-			print("Saving\n\(employee)")
-			
-			if let error = error {
-				print(error)
-				return
-			}
-			
-			print("Saved\n\(record!)")
-		}
+		self.createOrUpdate(employee)
 	}
 	
 	private func save(_ role: Role) {

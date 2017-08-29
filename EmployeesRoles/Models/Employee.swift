@@ -47,12 +47,16 @@ struct Employee: Codable, Equatable, Hashable {
 	}
 }
 
-extension Employee {
+extension Employee: CloudKitProtocol {
+	func getRecordId() -> CKRecordID {
+		return CKRecordID(recordName: "\(self.typeName)\(self.employeeId)")
+	}
 	
-	func intoRecord() -> CKRecord {
-		let recordId = CKRecordID(recordName: "\(self.typeName)\(self.employeeId)")
-		
-		let record = CKRecord(recordType: self.typeName, recordID: recordId)
+	func getNewRecord(from recordId: CKRecordID) -> CKRecord {
+		return CKRecord(recordType: self.typeName, recordID: recordId)
+	}
+	
+	func setRecordValues(for record: CKRecord) -> CKRecord {
 		
 		record[Employee.CodingKeys.name.stringValue] = NSString(string: self.name)
 		record[Employee.CodingKeys.birthdate.stringValue] = self.birthdate as NSDate
@@ -62,8 +66,8 @@ extension Employee {
 		return record
 	}
 	
-	func intoReference() -> CKReference {
-		let reference = CKReference(record: self.intoRecord(), action: .none)
+	func getReference() -> CKReference {
+		let reference = CKReference(recordID: self.getRecordId(), action: .none)
 		
 		return reference
 	}

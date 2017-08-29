@@ -81,7 +81,7 @@ extension Company: CloudKitProtocol {
 		var employeeReferences = [CKReference]()
 		
 		for employee in self.employees {
-			employeeReferences.append(employee.intoReference())
+			employeeReferences.append(employee.getReference())
 		}
 		
 		record[Company.CodingKeys.employees.stringValue] = employeeReferences as CKRecordValue
