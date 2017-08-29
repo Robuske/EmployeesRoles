@@ -75,8 +75,10 @@ class EditEmployeeTableViewController: UITableViewController, NewOrEditProtocol,
 	private func refillRoleData() {
 		if let currentEmployeeRole = self.employeeRole {
 			self.roleNameLabel.text = currentEmployeeRole.name
+			self.salaryField.text = String(currentEmployeeRole.salary)
 		} else {
 			self.roleNameLabel.text = ""
+			self.salaryField.text = ""
 		}
 	}
 	
@@ -113,8 +115,32 @@ class EditEmployeeTableViewController: UITableViewController, NewOrEditProtocol,
 	@IBAction func saveEmployee(_ sender: UIBarButtonItem) {
 		if self.testFilledFields() {
 			
-			// TODO: Here
+			var company = DataLayer.instance.loadCompany()
 			
+			let newEmployeeName = self.nameField.text!
+			let newEmployeeBirthdate = self.birthdatePicker.date
+			let newEmployeeSalary = UInt(self.salaryField.text!.stripToInt())
+			let newEmployeeRole = self.employeeRole!
+			
+			if self.employee != nil {
+				self.employee!.name = newEmployeeName
+				self.employee!.birthdate = newEmployeeBirthdate
+				self.employee!.salary = newEmployeeSalary
+				self.employee!.role = newEmployeeRole
+				
+				company.edit(self.employee!)
+			} else {
+				let newEmployee = Employee(name: newEmployeeName,
+				                           birthdate: newEmployeeBirthdate,
+				                           salary: newEmployeeSalary,
+				                           role: newEmployeeRole)
+				
+				company.add(newEmployee)
+			}
+			
+			_ = DataLayer.instance.save(company)
+			
+			self.performCorrectSegue()
 		}
 	}
 	
