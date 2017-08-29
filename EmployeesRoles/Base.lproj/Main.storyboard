@@ -140,11 +140,11 @@
             <objects>
                 <viewController title="Employees" id="tQT-vd-6iz" customClass="EmployeesViewController" customModule="EmployeesRoles" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="sG6-aN-MnH">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="551"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" keyboardDismissMode="interactive" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="14" sectionFooterHeight="14" translatesAutoresizingMaskIntoConstraints="NO" id="TBC-Yx-c50">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="502"/>
+                                <rect key="frame" x="0.0" y="116" width="375" height="502"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="employeeCell" textLabel="wJn-mo-KPB" detailTextLabel="Sga-VH-wsq" style="IBUITableViewCellStyleValue1" id="dbM-Ik-fBT">
@@ -190,7 +190,6 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="NUz-yJ-P97"/>
                     </view>
-                    <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
                     <navigationItem key="navigationItem" title="Employees" id="ECz-qx-i3p">
                         <barButtonItem key="backBarButtonItem" title=" " id="Hsz-2a-sH3"/>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="677-v8-kOB">
@@ -454,7 +453,7 @@
         <scene sceneID="eWi-pf-Xud">
             <objects>
                 <splitViewController title="EmployeesSplit" id="cBy-KF-LYA" customClass="NewSplitViewController" customModule="EmployeesRoles" customModuleProvider="target" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Employees" id="uq3-5D-bxC"/>
+                    <tabBarItem key="tabBarItem" title="Employees" image="second" id="uq3-5D-bxC"/>
                     <connections>
                         <segue destination="flu-fe-wb0" kind="relationship" relationship="masterViewController" id="Zdw-gU-KNa"/>
                         <segue destination="u7t-Rb-Vj3" kind="relationship" relationship="detailViewController" id="nsi-CA-fmA"/>
@@ -485,11 +484,11 @@
             <objects>
                 <viewController id="R8m-bG-zKf" customClass="RolesViewController" customModule="EmployeesRoles" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="qPf-Q2-oNF">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="551"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" keyboardDismissMode="interactive" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="14" sectionFooterHeight="14" translatesAutoresizingMaskIntoConstraints="NO" id="j3i-rH-FE2">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="502"/>
+                                <rect key="frame" x="0.0" y="116" width="375" height="502"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="default" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="roleCell" textLabel="m0G-5U-A3y" detailTextLabel="JOM-9C-k8i" style="IBUITableViewCellStyleValue1" id="ge2-bl-QFN">
@@ -535,7 +534,6 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="7cC-Bt-NVI"/>
                     </view>
-                    <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
                     <navigationItem key="navigationItem" title="Roles" id="BQs-eb-Mq7">
                         <barButtonItem key="backBarButtonItem" title=" " id="voO-7U-LUU"/>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="Nuv-Rn-akD">
@@ -556,7 +554,7 @@
         <scene sceneID="sdM-DL-mTw">
             <objects>
                 <splitViewController title="RolesSplit" id="0MC-Ac-qU0" customClass="NewSplitViewController" customModule="EmployeesRoles" customModuleProvider="target" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Roles" id="L4H-JQ-aHz"/>
+                    <tabBarItem key="tabBarItem" title="Roles" image="first" id="L4H-JQ-aHz"/>
                     <connections>
                         <segue destination="CE8-st-FOO" kind="relationship" relationship="masterViewController" id="cOn-TC-AfZ"/>
                         <segue destination="90A-3A-S8g" kind="relationship" relationship="detailViewController" id="T4f-gE-PQk"/>
@@ -587,7 +585,7 @@
         <!--Role-->
         <scene sceneID="Fqa-Rv-toG">
             <objects>
-                <tableViewController id="YwJ-EQ-nzD" customClass="RoleTableViewController" customModule="EmployeesRoles" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController title="Role" id="YwJ-EQ-nzD" customClass="RoleTableViewController" customModule="EmployeesRoles" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" keyboardDismissMode="interactive" dataMode="static" style="grouped" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="14" sectionFooterHeight="14" id="pG8-Ls-NTz">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -704,7 +702,7 @@
                 <navigationController title="EmployeeNavigation" id="u7t-Rb-Vj3" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="Cpb-fP-R7G">
-                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="375" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -903,10 +901,14 @@
             <point key="canvasLocation" x="4290" y="1218"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="first" width="30" height="30"/>
+        <image name="second" width="30" height="30"/>
+    </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="YqK-Hu-Njq"/>
-        <segue reference="nsi-CA-fmA"/>
+        <segue reference="alz-zk-MMs"/>
+        <segue reference="uEf-aL-hgj"/>
         <segue reference="HLG-fb-AKS"/>
-        <segue reference="Yy1-S8-ZBr"/>
+        <segue reference="Fg9-NZ-K2Z"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -21,6 +21,12 @@ class EmployeesViewController: UIViewController, UITableViewDataSource, UITableV
 		self.reloadData()
     }
 	
+	override func viewWillAppear(_ animated: Bool) {
+		super.viewWillAppear(animated)
+		
+		self.reloadData()
+	}
+	
 	func reloadData() {
 		let company = DataLayer.instance.loadCompany()
 		self.employees = company.employees.sorted { $0.name < $1.name }
@@ -45,6 +51,12 @@ class EmployeesViewController: UIViewController, UITableViewDataSource, UITableV
 		
 		return cell
 	}
+	
+	// MARK: - Table view delegate
+	
+	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+		tableView.deselectRow(at: indexPath, animated: true)
+	}
 
     // MARK: - Navigation
 	
@@ -52,8 +64,15 @@ class EmployeesViewController: UIViewController, UITableViewDataSource, UITableV
 		self.reloadData()
 	}
 
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//
-//    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+		if let destinationNavigationController = segue.destination as? UINavigationController,
+			let employeeController = destinationNavigationController.topViewController as? EmployeeTableViewController {
+			
+			if let selectedRow = self.table.indexPathForSelectedRow?.row {
+				employeeController.employee = self.employees[selectedRow]
+				employeeController.delegate = self
+			}
+		}
+    }
 	
 }

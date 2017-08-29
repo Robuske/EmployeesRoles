@@ -111,7 +111,7 @@ extension ShowDetailProtocol where Self: UIViewController {
 		let objectIsNil = testObject == nil
 		
 		self.view.isHidden = objectIsNil
-		self.title = ""
+		//self.title = ""
 		
 		if objectIsNil {
 			self.navigationItem.rightBarButtonItem = nil

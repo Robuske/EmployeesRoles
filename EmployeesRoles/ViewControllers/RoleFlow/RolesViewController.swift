@@ -24,6 +24,7 @@ class RolesViewController: UIViewController, UITableViewDataSource, UITableViewD
 	
 	func reloadData() {
 		self.reloadData(in: table)
+		
 	}
 	
 	// MARK: - Table view data source
@@ -40,6 +41,12 @@ class RolesViewController: UIViewController, UITableViewDataSource, UITableViewD
 		self.format(cell, with: role)
 		
 		return cell
+	}
+	
+	// MARK: - Table view delegate
+	
+	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+		tableView.deselectRow(at: indexPath, animated: true)
 	}
 	
 	// MARK: - Navigation

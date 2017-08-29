@@ -30,7 +30,7 @@ class RoleTableViewController: UITableViewController, ShowDetailProtocol {
 	
 	private func refillData() {
 		if let currentRole = self.role {
-			self.title = currentRole.name
+			//self.title = currentRole.name
 			
 			self.roleName.text = currentRole.name
 			self.roleSalary.text = NumberFormatter.localizedString(from: NSNumber(value: currentRole.salary), number: .currency)

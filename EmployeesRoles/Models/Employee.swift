@@ -14,7 +14,18 @@ struct Employee: Codable, Equatable, Hashable {
 	var name: String
 	var birthdate: Date
 	var salary: UInt
-	var role: Role
+	
+	var role: Role {
+		get {
+			let company = DataLayer.instance.loadCompany()
+			return company.roles.first { $0.roleId == self.roleId }!
+		}
+		set {
+			self.roleId = newValue.roleId
+		}
+	}
+	
+	private var roleId: UInt
 	
 	var hashValue: Int {
 		return Int(self.employeeId)
@@ -25,7 +36,7 @@ struct Employee: Codable, Equatable, Hashable {
 		self.name = name
 		self.birthdate = birthdate
 		self.salary = salary
-		self.role = role
+		self.roleId = role.roleId
 	}
 	
 	static func == (lhs: Employee, rhs: Employee) -> Bool {

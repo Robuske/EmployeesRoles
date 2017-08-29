@@ -33,7 +33,7 @@ class EmployeeTableViewController: UITableViewController, ShowDetailProtocol {
 	
 	private func refillData() {
 		if let currentEmployee = self.employee {
-			self.title = currentEmployee.name
+			//self.title = currentEmployee.name
 			
 			self.employeeName.text = currentEmployee.name
 			self.employeeBirthdate.text = DateFormatter.localizedString(from: currentEmployee.birthdate, dateStyle: .short, timeStyle: .none)
