@@ -1,5 +1,11 @@
+/* Title for the edit employee screen */
+"editEmployee" = "Editar Empregado";
+
 /* Title for the edit role screen */
 "editRole" = "Editar Cargo";
+
+/* Title for the new employee screen */
+"newEmployee" = "Novo Empregado";
 
 /* Title for the new role screen */
 "newRole" = "Novo Cargo";

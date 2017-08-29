@@ -1,11 +1,26 @@
+/* Class = "UITableViewController"; title = "Role"; ObjectID = "0Ip-Az-xTO"; */
+"0Ip-Az-xTO.title" = "Cargo";
+
 /* Class = "UISplitViewController"; title = "RolesSplit"; ObjectID = "0MC-Ac-qU0"; */
 "0MC-Ac-qU0.title" = "RolesSplit";
 
-/* Class = "UINavigationItem"; title = "Role"; ObjectID = "2tX-um-9KM"; */
-"2tX-um-9KM.title" = "Cargo";
+/* Class = "UILabel"; text = "Birthdate"; ObjectID = "6BK-lE-qeL"; */
+"6BK-lE-qeL.text" = "Nascimento";
 
-/* Class = "UIViewController"; title = "New Role"; ObjectID = "59f-t9-jNH"; */
-"59f-t9-jNH.title" = "Novo Cargo";
+/* Class = "UILabel"; text = "Role"; ObjectID = "7xR-Aw-e2r"; */
+"7xR-Aw-e2r.text" = "Cargo";
+
+/* Class = "UINavigationItem"; title = "Role"; ObjectID = "9Nd-tR-d4u"; */
+"9Nd-tR-d4u.title" = "Cargo";
+
+/* Class = "UITableViewController"; title = "Employee"; ObjectID = "9Ss-eg-gTm"; */
+"9Ss-eg-gTm.title" = "Empregado";
+
+/* Class = "UITextField"; placeholder = "Role"; ObjectID = "9Tz-zS-EeI"; */
+"9Tz-zS-EeI.placeholder" = "Cargo";
+
+/* Class = "UINavigationController"; title = "RoleNavigation"; ObjectID = "90A-3A-S8g"; */
+"90A-3A-S8g.title" = "";
 
 /* Class = "UINavigationItem"; title = "Roles"; ObjectID = "BQs-eb-Mq7"; */
 "BQs-eb-Mq7.title" = "Cargos";
@@ -13,56 +28,104 @@
 /* Class = "UINavigationController"; title = "RolesNavigation"; ObjectID = "CE8-st-FOO"; */
 "CE8-st-FOO.title" = "RolesNavigation";
 
+/* Class = "UILabel"; text = "Name"; ObjectID = "Cgc-Eg-AGZ"; */
+"Cgc-Eg-AGZ.text" = "Nome";
+
 /* Class = "UINavigationItem"; title = "Employees"; ObjectID = "ECz-qx-i3p"; */
 "ECz-qx-i3p.title" = "Empregados";
+
+/* Class = "UILabel"; text = "Salary"; ObjectID = "Egx-0B-STm"; */
+"Egx-0B-STm.text" = "Salário";
+
+/* Class = "UINavigationItem"; title = "New Role"; ObjectID = "HTT-KB-ypB"; */
+"HTT-KB-ypB.title" = "Novo Cargo";
+
+/* Class = "UILabel"; text = "Salary"; ObjectID = "HqB-vQ-FbR"; */
+"HqB-vQ-FbR.text" = "Salário";
 
 /* Class = "UIBarButtonItem"; title = " "; ObjectID = "Hsz-2a-sH3"; */
 "Hsz-2a-sH3.title" = " ";
 
+/* Class = "UINavigationItem"; title = "Employee"; ObjectID = "IW8-LC-wxf"; */
+"IW8-LC-wxf.title" = "Empregado";
+
 /* Class = "UILabel"; text = "roleSalary"; ObjectID = "JOM-9C-k8i"; */
 "JOM-9C-k8i.text" = "roleSalary";
+
+/* Class = "UINavigationItem"; title = "New Employee"; ObjectID = "JOx-pX-YhZ"; */
+"JOx-pX-YhZ.title" = "Novo Empregado";
 
 /* Class = "UITabBarItem"; title = "Roles"; ObjectID = "L4H-JQ-aHz"; */
 "L4H-JQ-aHz.title" = "Cargos";
 
-/* Class = "UIViewController"; title = "Role"; ObjectID = "PVj-Za-P0U"; */
-"PVj-Za-P0U.title" = "Cargo";
+/* Class = "UILabel"; text = "Role"; ObjectID = "MT4-IR-RaC"; */
+"MT4-IR-RaC.text" = "Cargo";
 
-/* Class = "UITextField"; placeholder = "Salary"; ObjectID = "Rpe-dp-naf"; */
-"Rpe-dp-naf.placeholder" = "Salário";
+/* Class = "UILabel"; text = "roleName"; ObjectID = "Mvn-pa-3Tk"; */
+"Mvn-pa-3Tk.text" = "";
+
+/* Class = "UILabel"; text = "roleSalary"; ObjectID = "Pa2-rk-dnb"; */
+"Pa2-rk-dnb.text" = "";
 
 /* Class = "UILabel"; text = "employeeRole"; ObjectID = "Sga-VH-wsq"; */
 "Sga-VH-wsq.text" = "employeeRole";
 
-/* Class = "UILabel"; text = "Salary"; ObjectID = "V7p-bd-pHF"; */
-"V7p-bd-pHF.text" = "Salário";
+/* Class = "UILabel"; text = "employeeName"; ObjectID = "TwL-po-vO0"; */
+"TwL-po-vO0.text" = "";
 
-/* Class = "UILabel"; text = "roleName"; ObjectID = "WIe-0R-yQY"; */
-"WIe-0R-yQY.text" = "roleName";
+/* Class = "UITextField"; placeholder = "Name"; ObjectID = "YSX-my-gZG"; */
+"YSX-my-gZG.placeholder" = "Nome";
 
-/* Class = "UITextField"; placeholder = "Role"; ObjectID = "XAz-zq-HNi"; */
-"XAz-zq-HNi.placeholder" = "Cargo";
+/* Class = "UILabel"; text = "roleName"; ObjectID = "Yly-cN-fE3"; */
+"Yly-cN-fE3.text" = "";
+
+/* Class = "UITableViewController"; title = "Role"; ObjectID = "YwJ-EQ-nzD"; */
+"YwJ-EQ-nzD.title" = "Cargo";
+
+/* Class = "UILabel"; text = "employeeSalary"; ObjectID = "Z0P-SX-8eB"; */
+"Z0P-SX-8eB.text" = "";
+
+/* Class = "UILabel"; text = "XX/XX/XXXX"; ObjectID = "aQp-1l-SMa"; */
+"aQp-1l-SMa.text" = "";
 
 /* Class = "UISplitViewController"; title = "EmployeesSplit"; ObjectID = "cBy-KF-LYA"; */
 "cBy-KF-LYA.title" = "EmployeesSplit";
 
+/* Class = "UILabel"; text = "employeeBirthdate"; ObjectID = "f0l-TK-up2"; */
+"f0l-TK-up2.text" = "";
+
 /* Class = "UINavigationController"; title = "EmployeesNavigation"; ObjectID = "flu-fe-wb0"; */
 "flu-fe-wb0.title" = "EmployeesNavigation";
+
+/* Class = "UILabel"; text = "employeeRole"; ObjectID = "gZQ-WH-aso"; */
+"gZQ-WH-aso.text" = "";
+
+/* Class = "UILabel"; text = "Birthdate"; ObjectID = "i8d-nv-9V7"; */
+"i8d-nv-9V7.text" = "Nascimento";
+
+/* Class = "UITextField"; placeholder = "Salary"; ObjectID = "j28-7O-wMp"; */
+"j28-7O-wMp.placeholder" = "Salário";
+
+/* Class = "UILabel"; text = "roleSalary"; ObjectID = "lVL-5L-d53"; */
+"lVL-5L-d53.text" = "";
 
 /* Class = "UILabel"; text = "roleName"; ObjectID = "m0G-5U-A3y"; */
 "m0G-5U-A3y.text" = "roleName";
 
-/* Class = "UILabel"; text = "Role"; ObjectID = "pvK-Sw-QKI"; */
-"pvK-Sw-QKI.text" = "Cargo";
+/* Class = "UILabel"; text = "Role"; ObjectID = "qG1-Vo-Inp"; */
+"qG1-Vo-Inp.text" = "Cargo";
 
-/* Class = "UIViewController"; title = "Employee"; ObjectID = "rfN-UC-fBi"; */
-"rfN-UC-fBi.title" = "Empregado";
+/* Class = "UILabel"; text = "roleName"; ObjectID = "rJE-e2-Bgc"; */
+"rJE-e2-Bgc.text" = "";
 
-/* Class = "UINavigationItem"; title = "New Role"; ObjectID = "skJ-hY-eL7"; */
-"skJ-hY-eL7.title" = "Novo Cargo";
+/* Class = "UINavigationController"; title = "NewEmployeeNavigation"; ObjectID = "sJz-Oj-hc9"; */
+"sJz-Oj-hc9.title" = "";
 
 /* Class = "UIViewController"; title = "Employees"; ObjectID = "tQT-vd-6iz"; */
 "tQT-vd-6iz.title" = "Empregados";
+
+/* Class = "UINavigationController"; title = "EmployeeNavigation"; ObjectID = "u7t-Rb-Vj3"; */
+"u7t-Rb-Vj3.title" = "";
 
 /* Class = "UITabBarItem"; title = "Employees"; ObjectID = "uq3-5D-bxC"; */
 "uq3-5D-bxC.title" = "Empregados";
@@ -73,6 +136,9 @@
 /* Class = "UILabel"; text = "employeeName"; ObjectID = "wJn-mo-KPB"; */
 "wJn-mo-KPB.text" = "employeeName";
 
-/* Class = "UILabel"; text = "roleSalary"; ObjectID = "wNv-my-aq2"; */
-"wNv-my-aq2.text" = "roleSalary";
+/* Class = "UINavigationController"; title = "NewRoleNavigation"; ObjectID = "x3m-cL-Mk9"; */
+"x3m-cL-Mk9.title" = "";
+
+/* Class = "UITextField"; placeholder = "Salary"; ObjectID = "yPg-qN-Hb1"; */
+"yPg-qN-Hb1.placeholder" = "Salário";
 
