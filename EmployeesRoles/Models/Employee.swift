@@ -6,9 +6,12 @@
 //  Copyright © 2017 Buske Org. All rights reserved.
 //
 
+import CloudKit
 import Foundation
 
 struct Employee: Codable, Equatable, Hashable {
+	
+	let typeName = "Employee"
 	
 	let employeeId: UInt
 	var name: String
@@ -42,4 +45,27 @@ struct Employee: Codable, Equatable, Hashable {
 	static func == (lhs: Employee, rhs: Employee) -> Bool {
 		return lhs.employeeId == rhs.employeeId
 	}
+}
+
+extension Employee {
+	
+	private func intoRecord() -> CKRecord {
+		let recordId = CKRecordID(recordName: String(self.employeeId))
+		
+		let record = CKRecord(recordType: self.typeName, recordID: recordId)
+		
+		record[Employee.CodingKeys.name.stringValue] = NSString(string: self.name)
+		record[Employee.CodingKeys.birthdate.stringValue] = self.birthdate as NSDate
+		record[Employee.CodingKeys.salary.stringValue] = NSString(string: String(self.salary))
+		record[Employee.CodingKeys.roleId.stringValue] = NSString(string: String(self.roleId))
+		
+		return record
+	}
+	
+	func intoReference() -> CKReference {
+		let reference = CKReference(record: self.intoRecord(), action: .none)
+		
+		return reference
+	}
+	
 }

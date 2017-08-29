@@ -19,7 +19,7 @@ class IdProvider: Codable {
 		return IdProvider()
 	}()
 	
-	let idProviderType = "IdProvider"
+	let typeName = "IdProvider"
 	
 	private var nextCompanyId: UInt
 	private var nextEmployeeId: UInt
@@ -60,15 +60,15 @@ class IdProvider: Codable {
 extension IdProvider {
 	
 	func intoRecord() -> CKRecord {
-		let recordId = CKRecordID(recordName: self.idProviderType)
+		let recordId = CKRecordID(recordName: self.typeName)
 		
-		let idProviderRecord = CKRecord(recordType: self.idProviderType, recordID: recordId)
+		let record = CKRecord(recordType: self.typeName, recordID: recordId)
 		
-		idProviderRecord[IdProvider.CodingKeys.nextCompanyId.stringValue] = NSString(string: String(self.nextCompanyId))
-		idProviderRecord[IdProvider.CodingKeys.nextEmployeeId.stringValue] = NSString(string: String(self.nextEmployeeId))
-		idProviderRecord[IdProvider.CodingKeys.nextRoleId.stringValue] = NSString(string: String(self.nextRoleId))
+		record[IdProvider.CodingKeys.nextCompanyId.stringValue] = NSString(string: String(self.nextCompanyId))
+		record[IdProvider.CodingKeys.nextEmployeeId.stringValue] = NSString(string: String(self.nextEmployeeId))
+		record[IdProvider.CodingKeys.nextRoleId.stringValue] = NSString(string: String(self.nextRoleId))
 		
-		return idProviderRecord
+		return record
 	}
 	
 	convenience init(record: CKRecord) {

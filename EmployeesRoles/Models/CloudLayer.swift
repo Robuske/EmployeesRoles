@@ -20,7 +20,7 @@ class CloudLayer {
 		self.publicDB = self.container.publicCloudDatabase
 	}
 	
-	func save(_ idProvider: IdProvider) {
+	private func save(_ idProvider: IdProvider) {
 		self.publicDB.save(idProvider.intoRecord()) { record, error in
 			if let error = error {
 				print(error)
@@ -29,5 +29,25 @@ class CloudLayer {
 			
 			print("Saved \(record!)")
 		}
+	}
+	
+	private func save(_ company: Company) {
+		self.publicDB.save(company.intoRecord()) { record, error in
+			if let error = error {
+				print(error)
+				return
+			}
+			
+			print("Saved \(record!)")
+		}
+	}
+	
+	func save(_ idProvider: IdProvider, and companies: Set<Company>) {
+		self.save(idProvider)
+		
+		for company in companies {
+			self.save(company)
+		}
+		
 	}
 }

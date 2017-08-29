@@ -6,10 +6,13 @@
 //  Copyright © 2017 Buske Org. All rights reserved.
 //
 
-import Foundation
 import CloudKit
+import Foundation
 
 struct Company: Codable, Equatable, Hashable {
+	
+	let typeName = "Company"
+	
 	let companyId: UInt
 	let name: String
 	
@@ -55,13 +58,38 @@ struct Company: Codable, Equatable, Hashable {
 
 extension Company {
 	
+	func intoRecord() -> CKRecord {
+		let recordId = CKRecordID(recordName: String(self.companyId))
+		
+		let record = CKRecord(recordType: self.typeName, recordID: recordId)
+		
+		record[Company.CodingKeys.name.stringValue] = self.name as CKRecordValue
+		
+		var roleReferences = [CKReference]()
+		
+		for role in self.roles {
+			roleReferences.append(role.intoReference())
+		}
+		
+		record[Company.CodingKeys.roles.stringValue] = roleReferences as CKRecordValue
+		
+		var employeeReferences = [CKReference]()
+		
+		for employee in self.employees {
+			employeeReferences.append(employee.intoReference())
+		}
+		
+		record[Company.CodingKeys.employees.stringValue] = employeeReferences as CKRecordValue
+		
+		return record
+	}
 	
 //	init(record: CKRecord) {
 //		let companyId = UInt(record.recordID.recordName.stripToInt())
 //		let name = record["name"]
 //		
 //		
-//		self.init(companyId: companyId, name: name, roles: <#T##Set<Role>#>, employees: <#T##Set<Employee>#>)
+//		self.init(companyId: companyId, name: name, roles: , employees: )
 //	}
 	
 }
