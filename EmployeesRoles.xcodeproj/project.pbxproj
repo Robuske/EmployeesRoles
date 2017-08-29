@@ -13,6 +13,7 @@
 		E7D903A61F5273B0003DF6B5 /* Shared.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D903A51F5273B0003DF6B5 /* Shared.swift */; };
 		E7D903A81F527563003DF6B5 /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D903A71F527563003DF6B5 /* UIViewControllerExtension.swift */; };
 		E7D903AB1F528E89003DF6B5 /* RoleSelectorTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D903AA1F528E89003DF6B5 /* RoleSelectorTableViewController.swift */; };
+		FC4BB6AE1F559B350047A267 /* CloudLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC4BB6AD1F559B350047A267 /* CloudLayer.swift */; };
 		FC4CC7F71F50AB4900818ADB /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = FC4CC7F91F50AB4900818ADB /* Localizable.strings */; };
 		FC4CC7FC1F50AB4A00818ADB /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = FC4CC7FE1F50AB4A00818ADB /* InfoPlist.strings */; };
 		FC4CC8041F50B80E00818ADB /* EditRoleTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC4CC8031F50B80E00818ADB /* EditRoleTableViewController.swift */; };
@@ -39,6 +40,7 @@
 		E7D903A51F5273B0003DF6B5 /* Shared.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shared.swift; sourceTree = "<group>"; };
 		E7D903A71F527563003DF6B5 /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
 		E7D903AA1F528E89003DF6B5 /* RoleSelectorTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoleSelectorTableViewController.swift; sourceTree = "<group>"; };
+		FC4BB6AD1F559B350047A267 /* CloudLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudLayer.swift; sourceTree = "<group>"; };
 		FC4CC7F31F50A8C400818ADB /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Main.strings"; sourceTree = "<group>"; };
 		FC4CC7F41F50A8C400818ADB /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
 		FC4CC7F81F50AB4900818ADB /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Localizable.strings"; sourceTree = "<group>"; };
@@ -119,6 +121,7 @@
 			isa = PBXGroup;
 			children = (
 				FCEAAE271F4F53BF0031E1AF /* DataLayer.swift */,
+				FC4BB6AD1F559B350047A267 /* CloudLayer.swift */,
 				FC8681371F4B742900FD6875 /* IdProvider.swift */,
 				FC8D3B921F4CCB5600305EF5 /* Company.swift */,
 				FCE5C1D31F4B6D14007F4EF2 /* Employee.swift */,
@@ -289,6 +292,7 @@
 				FCEAAE281F4F53BF0031E1AF /* DataLayer.swift in Sources */,
 				FCE5C1D41F4B6D14007F4EF2 /* Employee.swift in Sources */,
 				FCE5C1BF1F4B6951007F4EF2 /* AppDelegate.swift in Sources */,
+				FC4BB6AE1F559B350047A267 /* CloudLayer.swift in Sources */,
 				FC8D3B931F4CCB5600305EF5 /* Company.swift in Sources */,
 				E71B7D211F511DB000A28F1C /* StringExtension.swift in Sources */,
 				E7D903AB1F528E89003DF6B5 /* RoleSelectorTableViewController.swift in Sources */,

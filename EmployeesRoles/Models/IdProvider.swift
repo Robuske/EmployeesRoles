@@ -6,6 +6,7 @@
 //  Copyright © 2017 Buske Org. All rights reserved.
 //
 
+import CloudKit
 import Foundation
 
 class IdProvider: Codable {
@@ -18,11 +19,21 @@ class IdProvider: Codable {
 		return IdProvider()
 	}()
 	
-	private var nextCompanyId: UInt = 0
-	private var nextRoleId: UInt = 0
-	private var nextEmployeeId: UInt = 0
+	let idProviderType = "IdProvider"
 	
-	private init() {}
+	private var nextCompanyId: UInt
+	private var nextEmployeeId: UInt
+	private var nextRoleId: UInt
+	
+	private init(nextCompanyId: UInt, nextEmployeeId: UInt, nextRoleId: UInt) {
+		self.nextCompanyId = nextCompanyId
+		self.nextEmployeeId = nextEmployeeId
+		self.nextRoleId = nextRoleId
+	}
+	
+	convenience private init() {
+		self.init(nextCompanyId: 0, nextEmployeeId: 0, nextRoleId: 0)
+	}
 	
 	func newCompanyId() -> UInt {
 		let old = self.nextCompanyId
@@ -44,4 +55,31 @@ class IdProvider: Codable {
 		
 		return old
 	}
+}
+
+extension IdProvider {
+	
+	func intoRecord() -> CKRecord {
+		let recordId = CKRecordID(recordName: self.idProviderType)
+		
+		let idProviderRecord = CKRecord(recordType: self.idProviderType, recordID: recordId)
+		
+		idProviderRecord[IdProvider.CodingKeys.nextCompanyId.stringValue] = NSString(string: String(self.nextCompanyId))
+		idProviderRecord[IdProvider.CodingKeys.nextEmployeeId.stringValue] = NSString(string: String(self.nextEmployeeId))
+		idProviderRecord[IdProvider.CodingKeys.nextRoleId.stringValue] = NSString(string: String(self.nextRoleId))
+		
+		return idProviderRecord
+	}
+	
+	convenience init(record: CKRecord) {
+		
+		guard let companyId = record["nextCompanyId"] as? Int,
+			let employeeId = record["nextEmployeeId"] as? Int,
+			let roleId = record["nextRoleId"] as? Int else {
+			fatalError("Couldn't decode IdProvider record")
+		}
+		
+		self.init(nextCompanyId: UInt(companyId), nextEmployeeId: UInt(employeeId), nextRoleId: UInt(roleId))
+	}
+	
 }

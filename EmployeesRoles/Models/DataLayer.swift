@@ -27,6 +27,8 @@ class DataLayer {
 			UserDefaults.standard.set(companiesData, forKey: self.companiesKey)
 			UserDefaults.standard.set(idProviderData, forKey: self.idProviderKey)
 			
+			CloudLayer.instance.save(IdProvider.instance)
+			
 		} catch {
 			print("Could not encode, got error:")
 			print(error)

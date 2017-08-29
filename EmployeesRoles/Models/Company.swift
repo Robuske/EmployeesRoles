@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import CloudKit
 
 struct Company: Codable, Equatable, Hashable {
 	let companyId: UInt
@@ -16,12 +17,18 @@ struct Company: Codable, Equatable, Hashable {
 		return Int(self.companyId)
 	}
 	
-	private(set) var roles = Set<Role>()
-	private(set) var employees = Set<Employee>()
+	private(set) var roles: Set<Role>
+	private(set) var employees: Set<Employee>
+	
+	private init(companyId: UInt, name: String, roles: Set<Role>, employees: Set<Employee>) {
+		self.companyId = companyId
+		self.name = name
+		self.roles = roles
+		self.employees = employees
+	}
 	
 	init(name: String) {
-		self.companyId = IdProvider.instance.newCompanyId()
-		self.name = name
+		self.init(companyId: IdProvider.instance.newCompanyId(), name: name, roles: Set(), employees: Set())
 	}
 	
 	static func == (lhs: Company, rhs: Company) -> Bool {
@@ -43,5 +50,18 @@ struct Company: Codable, Equatable, Hashable {
 	mutating func edit(_ employee: Employee) {
 		self.employees.update(with: employee)
 	}
+	
+}
+
+extension Company {
+	
+	
+//	init(record: CKRecord) {
+//		let companyId = UInt(record.recordID.recordName.stripToInt())
+//		let name = record["name"]
+//		
+//		
+//		self.init(companyId: companyId, name: name, roles: <#T##Set<Role>#>, employees: <#T##Set<Employee>#>)
+//	}
 	
 }
