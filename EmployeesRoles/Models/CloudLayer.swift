@@ -8,6 +8,12 @@
 
 import CloudKit
 
+protocol CloudKitProtocol {
+	func getRecordId() -> CKRecordID
+	func getNewRecord(from recordId: CKRecordID) -> CKRecord
+	func setRecordValues(for record: CKRecord) -> CKRecord
+}
+
 class CloudLayer {
 	
 	static let instance = CloudLayer()
@@ -59,6 +65,38 @@ class CloudLayer {
 		}
 	}
 	
+	private func createOrUpdate(_ object: CloudKitProtocol) {
+		self.publicDB.fetch(withRecordID: object.getRecordId()) { record, error in
+			
+			if let existingRecord = record {
+				self.publicDB.save(object.setRecordValues(for: existingRecord)) { record, error in
+					
+					if let error = error {
+						print(error)
+						return
+					}
+					
+					print("Updated\n\(record!)")
+				}
+				
+			} else {
+				
+				self.publicDB.save(object.getNewRecord(from: object.getRecordId())) { record, error in
+					
+					if let error = error {
+						print(error)
+						return
+					}
+					
+					print("Saved\n\(record!)")
+					
+				}
+				
+			}
+			
+		}
+	}
+	
 	private func save(_ company: Company) {
 		for role in company.roles {
 			self.save(role)
@@ -68,20 +106,7 @@ class CloudLayer {
 			self.save(employee)
 		}
 		
-		self.publicDB.fetch(withRecordID: company.getRecordId()) { record, error in
-			
-			self.publicDB.save(company.setRecordValues(record: record!)) { record, error in
-				print("Saving\n\n\(company)")
-				
-				if let error = error {
-					print(error)
-					return
-				}
-				
-				print("Saved\n\(record!)")
-			}
-			
-		}
+		createOrUpdate(company)
 		
 	}
 	
