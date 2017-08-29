@@ -57,12 +57,16 @@ class IdProvider: Codable {
 	}
 }
 
-extension IdProvider {
+extension IdProvider: CloudKitProtocol {
+	func getRecordId() -> CKRecordID {
+		return CKRecordID(recordName: self.typeName)
+	}
 	
-	func intoRecord() -> CKRecord {
-		let recordId = CKRecordID(recordName: self.typeName)
-		
-		let record = CKRecord(recordType: self.typeName, recordID: recordId)
+	func getNewRecord(from recordId: CKRecordID) -> CKRecord {
+		return CKRecord(recordType: self.typeName, recordID: recordId)
+	}
+	
+	func setRecordValues(for record: CKRecord) -> CKRecord {
 		
 		record[IdProvider.CodingKeys.nextCompanyId.stringValue] = NSString(string: String(self.nextCompanyId))
 		record[IdProvider.CodingKeys.nextEmployeeId.stringValue] = NSString(string: String(self.nextEmployeeId))
