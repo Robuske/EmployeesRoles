@@ -62,15 +62,11 @@ extension IdProvider: CloudKitProtocol {
 		return CKRecordID(recordName: self.typeName)
 	}
 	
-	func getNewRecord(from recordId: CKRecordID) -> CKRecord {
-		return CKRecord(recordType: self.typeName, recordID: recordId)
-	}
-	
 	func setRecordValues(for record: CKRecord) -> CKRecord {
 		
-		record[IdProvider.CodingKeys.nextCompanyId.stringValue] = NSString(string: String(self.nextCompanyId))
-		record[IdProvider.CodingKeys.nextEmployeeId.stringValue] = NSString(string: String(self.nextEmployeeId))
-		record[IdProvider.CodingKeys.nextRoleId.stringValue] = NSString(string: String(self.nextRoleId))
+		record[IdProvider.CodingKeys.nextCompanyId.stringValue] = self.nextCompanyId as CKRecordValue
+		record[IdProvider.CodingKeys.nextEmployeeId.stringValue] = self.nextEmployeeId as CKRecordValue
+		record[IdProvider.CodingKeys.nextRoleId.stringValue] = self.nextRoleId as CKRecordValue
 		
 		return record
 	}

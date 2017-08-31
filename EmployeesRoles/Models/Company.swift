@@ -62,10 +62,6 @@ extension Company: CloudKitProtocol {
 		return CKRecordID(recordName: "\(self.typeName)\(self.companyId)")
 	}
 	
-	func getNewRecord(from recordId: CKRecordID) -> CKRecord {
-		return CKRecord(recordType: self.typeName, recordID: recordId)
-	}
-	
 	func setRecordValues(for record: CKRecord) -> CKRecord {
 		
 		record[Company.CodingKeys.name.stringValue] = self.name as CKRecordValue

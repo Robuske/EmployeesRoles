@@ -37,14 +37,10 @@ extension Role: CloudKitProtocol {
 		return CKRecordID(recordName: "\(self.typeName)\(self.roleId)")
 	}
 	
-	func getNewRecord(from recordId: CKRecordID) -> CKRecord {
-		return CKRecord(recordType: self.typeName, recordID: recordId)
-	}
-	
 	func setRecordValues(for record: CKRecord) -> CKRecord {
 		
-		record[Role.CodingKeys.name.stringValue] = NSString(string: self.name)
-		record[Role.CodingKeys.salary.stringValue] = NSString(string: String(self.salary))
+		record[Role.CodingKeys.name.stringValue] = self.name as CKRecordValue
+		record[Role.CodingKeys.salary.stringValue] = self.salary as CKRecordValue
 		
 		return record
 	}

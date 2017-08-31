@@ -52,16 +52,12 @@ extension Employee: CloudKitProtocol {
 		return CKRecordID(recordName: "\(self.typeName)\(self.employeeId)")
 	}
 	
-	func getNewRecord(from recordId: CKRecordID) -> CKRecord {
-		return CKRecord(recordType: self.typeName, recordID: recordId)
-	}
-	
 	func setRecordValues(for record: CKRecord) -> CKRecord {
 		
-		record[Employee.CodingKeys.name.stringValue] = NSString(string: self.name)
-		record[Employee.CodingKeys.birthdate.stringValue] = self.birthdate as NSDate
-		record[Employee.CodingKeys.salary.stringValue] = NSString(string: String(self.salary))
-		record[Employee.CodingKeys.roleId.stringValue] = NSString(string: String(self.roleId))
+		record[Employee.CodingKeys.name.stringValue] = self.name as CKRecordValue
+		record[Employee.CodingKeys.birthdate.stringValue] = self.birthdate as CKRecordValue
+		record[Employee.CodingKeys.salary.stringValue] = self.salary as CKRecordValue
+		record[Employee.CodingKeys.roleId.stringValue] = self.roleId as CKRecordValue
 		
 		return record
 	}

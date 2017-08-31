@@ -9,9 +9,21 @@
 import CloudKit
 
 protocol CloudKitProtocol {
+	var typeName: String { get }
+	
 	func getRecordId() -> CKRecordID
 	func getNewRecord(from recordId: CKRecordID) -> CKRecord
 	func setRecordValues(for record: CKRecord) -> CKRecord
+}
+
+extension CloudKitProtocol {
+	
+	func getNewRecord(from recordId: CKRecordID) -> CKRecord {
+		let newRecord = CKRecord(recordType: self.typeName, recordID: recordId)
+		
+		return self.setRecordValues(for: newRecord)
+	}
+	
 }
 
 class CloudLayer {
@@ -87,9 +99,10 @@ class CloudLayer {
 
 		self.save(idProvider)
 		
-		for company in companies {
-			self.save(company)
-		}
+//		for company in companies {
+//			self.save(company)
+//		}
 		
+		self.createOrUpdate(companies.first!)
 	}
 }
