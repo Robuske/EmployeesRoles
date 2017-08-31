@@ -34,12 +34,16 @@ struct Employee: Codable, Equatable, Hashable {
 		return Int(self.employeeId)
 	}
 	
-	init(name: String, birthdate: Date, salary: UInt, role: Role) {
-		self.employeeId = IdProvider.instance.newEmployeeId()
+	private init(employeeId: UInt, name: String, birthdate: Date, salary: UInt, roleId: UInt) {
+		self.employeeId = employeeId
 		self.name = name
 		self.birthdate = birthdate
 		self.salary = salary
-		self.roleId = role.roleId
+		self.roleId = roleId
+	}
+	
+	init(name: String, birthdate: Date, salary: UInt, role: Role) {
+		self.init(employeeId: IdProvider.instance.newEmployeeId(), name: name, birthdate: birthdate, salary: salary, roleId: role.roleId)
 	}
 	
 	static func == (lhs: Employee, rhs: Employee) -> Bool {
@@ -48,6 +52,20 @@ struct Employee: Codable, Equatable, Hashable {
 }
 
 extension Employee: CloudLayerProtocol {
+	init?(_ record: CKRecord) {
+		guard let name = record[Employee.CodingKeys.name.stringValue] as? String,
+		let birthdate = record[Employee.CodingKeys.birthdate.stringValue] as? Date,
+		let salary = record[Employee.CodingKeys.salary.stringValue] as? UInt,
+		let roleId = record[Employee.CodingKeys.roleId.stringValue] as? UInt else {
+			print("Couldn't decode Employee record")
+			return nil
+		}
+		
+		let employeeId = UInt(record.recordID.recordName.stripToInt())
+		
+		self.init(employeeId: employeeId, name: name, birthdate: birthdate, salary: salary, roleId: roleId)
+	}
+	
 	func getRecordId() -> CKRecordID {
 		return CKRecordID(recordName: "\(self.typeName)\(self.employeeId)")
 	}

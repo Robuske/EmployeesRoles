@@ -11,6 +11,8 @@ import CloudKit
 protocol CloudLayerProtocol {
 	var typeName: String { get }
 	
+	init?(_ record: CKRecord)
+	
 	func getRecordId() -> CKRecordID
 	func getNewRecord(from recordId: CKRecordID) -> CKRecord
 	func setRecordValues(for record: CKRecord) -> CKRecord

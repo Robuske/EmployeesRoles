@@ -57,6 +57,28 @@ struct Company: Codable, Equatable, Hashable {
 }
 
 extension Company: CloudLayerProtocol {
+	init?(_ record: CKRecord) {
+		guard let name = record[Company.CodingKeys.name.stringValue] as? String,
+		let rolesReferences = record[Company.CodingKeys.roles.stringValue] as? [CKReference],
+		let employeesReferences = record[Company.CodingKeys.employees.stringValue] as? [CKReference] else {
+			print("Couldn't decode Company record")
+			return nil
+		}
+		
+		let companyId = UInt(record.recordID.recordName.stripToInt())
+		
+		var roles = Set<Role>()
+		
+//		for roleReference in rolesReferences {
+//			if let role = Role(roleReference) {
+//				roles.insert(role)
+//			}
+//		}
+		
+		var employees = Set<Employee>()
+		
+		self.init(companyId: companyId, name: name, roles: roles, employees: employees)
+	}
 	
 	func getRecordId() -> CKRecordID {
 		return CKRecordID(recordName: "\(self.typeName)\(self.companyId)")
@@ -84,13 +106,5 @@ extension Company: CloudLayerProtocol {
 		
 		return record
 	}
-	
-//	init?(_ record: CKRecord) {
-//		let companyId = UInt(record.recordID.recordName.stripToInt())
-//		let name = record["name"]
-//		
-//		
-//		self.init(companyId: companyId, name: name, roles: roles, employees: employees)
-//	}
 	
 }

@@ -9,7 +9,7 @@
 import CloudKit
 import Foundation
 
-class IdProvider: Codable {
+final class IdProvider: Codable {
 	
 	static let instance: IdProvider = {
 		if let oldInstance = DataLayer.instance.loadIdProvider() {
@@ -61,6 +61,18 @@ class IdProvider: Codable {
 }
 
 extension IdProvider: CloudLayerProtocol {
+	convenience init?(_ record: CKRecord) {
+		
+		guard let companyId = record[IdProvider.CodingKeys.nextCompanyId.stringValue] as? UInt,
+			let employeeId = record[IdProvider.CodingKeys.nextEmployeeId.stringValue] as? UInt,
+			let roleId = record[IdProvider.CodingKeys.nextRoleId.stringValue] as? UInt else {
+				print("Couldn't decode IdProvider record")
+				return nil
+		}
+		
+		self.init(nextCompanyId: companyId, nextEmployeeId: employeeId, nextRoleId: roleId)
+	}
+	
 	func getRecordId() -> CKRecordID {
 		return CKRecordID(recordName: self.typeName)
 	}
@@ -78,18 +90,6 @@ extension IdProvider: CloudLayerProtocol {
 		instance.nextCompanyId = newObject.nextCompanyId
 		instance.nextEmployeeId = newObject.nextEmployeeId
 		instance.nextRoleId = newObject.nextRoleId
-	}
-	
-	convenience init?(_ record: CKRecord) {
-
-		guard let companyId = record[IdProvider.CodingKeys.nextCompanyId.stringValue] as? UInt,
-			let employeeId = record[IdProvider.CodingKeys.nextEmployeeId.stringValue] as? UInt,
-			let roleId = record[IdProvider.CodingKeys.nextRoleId.stringValue] as? UInt else {
-				print("Couldn't decode IdProvider record")
-				return nil
-		}
-
-		self.init(nextCompanyId: companyId, nextEmployeeId: employeeId, nextRoleId: roleId)
 	}
 	
 }

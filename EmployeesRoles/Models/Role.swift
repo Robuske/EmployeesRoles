@@ -21,10 +21,14 @@ struct Role: Codable, Equatable, Hashable {
 		return Int(self.roleId)
 	}
 	
-	init(name: String, salary: UInt) {
-		self.roleId = IdProvider.instance.newRoleId()
+	private init(roleId: UInt, name: String, salary: UInt) {
+		self.roleId = roleId
 		self.name = name
 		self.salary = salary
+	}
+	
+	init(name: String, salary: UInt) {
+		self.init(roleId: IdProvider.instance.newRoleId(), name: name, salary: salary)
 	}
 	
 	static func == (lhs: Role, rhs: Role) -> Bool {
@@ -33,6 +37,18 @@ struct Role: Codable, Equatable, Hashable {
 }
 
 extension Role: CloudLayerProtocol {
+	init?(_ record: CKRecord) {
+		guard let name = record[Role.CodingKeys.name.stringValue] as? String,
+			let salary = record[Role.CodingKeys.salary.stringValue] as? UInt else {
+				print("Couldn't decode Role record")
+				return nil
+		}
+		
+		let roleId = UInt(record.recordID.recordName.stripToInt())
+		
+		self.init(roleId: roleId, name: name, salary: salary)
+	}
+	
 	func getRecordId() -> CKRecordID {
 		return CKRecordID(recordName: "\(self.typeName)\(self.roleId)")
 	}
@@ -51,13 +67,4 @@ extension Role: CloudLayerProtocol {
 		return reference
 	}
 	
-	init?(_ record: CKRecord) {
-		guard let name = record[Role.CodingKeys.name.stringValue] as? String,
-			let salary = record[Role.CodingKeys.salary.stringValue] as? UInt else {
-				print("Couldn't decode IdProvider record")
-				return nil
-		}
-		
-		self.init(name: name, salary: salary)
-	}
 }
