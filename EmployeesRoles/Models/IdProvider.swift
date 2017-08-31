@@ -18,11 +18,8 @@ final class IdProvider: Codable {
 		
 		return IdProvider()
 	}()
-	static let typeName = "IdProvider"
 	
-	var typeName: String {
-		return IdProvider.typeName
-	}
+	static let typeName = "IdProvider"
 	
 	private var nextCompanyId: UInt
 	private var nextEmployeeId: UInt
@@ -60,7 +57,7 @@ final class IdProvider: Codable {
 	}
 }
 
-extension IdProvider: CloudLayerProtocol {
+extension IdProvider: CloudLayerRecords {
 	convenience init?(_ record: CKRecord) {
 		
 		guard let companyId = record[IdProvider.CodingKeys.nextCompanyId.stringValue] as? UInt,
@@ -74,7 +71,7 @@ extension IdProvider: CloudLayerProtocol {
 	}
 	
 	func getRecordId() -> CKRecordID {
-		return CKRecordID(recordName: self.typeName)
+		return CKRecordID(recordName: IdProvider.typeName)
 	}
 	
 	func setRecordValues(for record: CKRecord) -> CKRecord {

@@ -11,7 +11,7 @@ import Foundation
 
 struct Company: Codable, Equatable, Hashable {
 	
-	let typeName = "Company"
+	static let typeName = "Company"
 	
 	let companyId: UInt
 	let name: String
@@ -56,32 +56,35 @@ struct Company: Codable, Equatable, Hashable {
 	
 }
 
-extension Company: CloudLayerProtocol {
-	init?(_ record: CKRecord) {
+extension Company: CloudLayerRecords {
+
+	static func loadCompany(_ record: CKRecord, completed: @escaping (Company?) -> Void) {
+		
 		guard let name = record[Company.CodingKeys.name.stringValue] as? String,
-		let rolesReferences = record[Company.CodingKeys.roles.stringValue] as? [CKReference],
-		let employeesReferences = record[Company.CodingKeys.employees.stringValue] as? [CKReference] else {
-			print("Couldn't decode Company record")
-			return nil
+			let rolesReferences = record[Company.CodingKeys.roles.stringValue] as? [CKReference],
+			let employeesReferences = record[Company.CodingKeys.employees.stringValue] as? [CKReference] else {
+				print("Couldn't decode Company record")
+				completed(nil)
+				return
 		}
 		
 		let companyId = UInt(record.recordID.recordName.stripToInt())
 		
-		var roles = Set<Role>()
+		CloudLayer.instance.load(rolesReferences + employeesReferences) { employees, roles in
+			if let roles = roles, let employees = employees {
+				
+				completed(Company(companyId: companyId, name: name, roles: roles, employees: employees))
+				
+			} else {
+				completed(nil)
+			}
+			
+		}
 		
-//		for roleReference in rolesReferences {
-//			if let role = Role(roleReference) {
-//				roles.insert(role)
-//			}
-//		}
-		
-		var employees = Set<Employee>()
-		
-		self.init(companyId: companyId, name: name, roles: roles, employees: employees)
 	}
 	
 	func getRecordId() -> CKRecordID {
-		return CKRecordID(recordName: "\(self.typeName)\(self.companyId)")
+		return CKRecordID(recordName: "\(Company.typeName)\(self.companyId)")
 	}
 	
 	func setRecordValues(for record: CKRecord) -> CKRecord {

@@ -11,7 +11,7 @@ import Foundation
 
 struct Role: Codable, Equatable, Hashable {
 	
-	let typeName = "Role"
+	static let typeName = "Role"
 	
 	let roleId: UInt
 	var name: String
@@ -36,7 +36,7 @@ struct Role: Codable, Equatable, Hashable {
 	}
 }
 
-extension Role: CloudLayerProtocol {
+extension Role: CloudLayerRecords, CloudLayerReferences {
 	init?(_ record: CKRecord) {
 		guard let name = record[Role.CodingKeys.name.stringValue] as? String,
 			let salary = record[Role.CodingKeys.salary.stringValue] as? UInt else {
@@ -50,7 +50,7 @@ extension Role: CloudLayerProtocol {
 	}
 	
 	func getRecordId() -> CKRecordID {
-		return CKRecordID(recordName: "\(self.typeName)\(self.roleId)")
+		return CKRecordID(recordName: "\(Role.typeName)\(self.roleId)")
 	}
 	
 	func setRecordValues(for record: CKRecord) -> CKRecord {
@@ -59,12 +59,6 @@ extension Role: CloudLayerProtocol {
 		record[Role.CodingKeys.salary.stringValue] = self.salary as CKRecordValue
 		
 		return record
-	}
-	
-	func getReference() -> CKReference {
-		let reference = CKReference(recordID: self.getRecordId(), action: .none)
-		
-		return reference
 	}
 	
 }

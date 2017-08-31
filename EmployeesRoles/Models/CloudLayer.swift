@@ -8,24 +8,36 @@
 
 import CloudKit
 
-protocol CloudLayerProtocol {
-	var typeName: String { get }
+protocol CloudLayerRecords {
+	static var typeName: String { get }
 	
-	init?(_ record: CKRecord)
+	//init?(_ record: CKRecord)
 	
 	func getRecordId() -> CKRecordID
 	func getNewRecord(from recordId: CKRecordID) -> CKRecord
 	func setRecordValues(for record: CKRecord) -> CKRecord
 }
 
-extension CloudLayerProtocol {
+extension CloudLayerRecords {
 	
 	func getNewRecord(from recordId: CKRecordID) -> CKRecord {
-		let newRecord = CKRecord(recordType: self.typeName, recordID: recordId)
+		let newRecord = CKRecord(recordType: type(of: self).typeName, recordID: recordId)
 		
 		return self.setRecordValues(for: newRecord)
 	}
 	
+}
+
+protocol CloudLayerReferences {
+	func getReference() -> CKReference
+}
+
+extension CloudLayerReferences where Self: CloudLayerRecords {
+	func getReference() -> CKReference {
+		let reference = CKReference(recordID: self.getRecordId(), action: .none)
+		
+		return reference
+	}
 }
 
 class CloudLayer {
@@ -42,14 +54,14 @@ class CloudLayer {
 	
 	// MARK: - Saving
 	
-	private func createOrUpdate(_ object: CloudLayerProtocol) {
+	private func createOrUpdate(_ object: CloudLayerRecords) {
 		self.publicDB.fetch(withRecordID: object.getRecordId()) { [weak self] record, error in
 			
 			if let existingRecord = record {
 				self?.publicDB.save(object.setRecordValues(for: existingRecord)) { record, error in
 					
 					if let error = error {
-						print(error)
+						print("Got error:\n\(error)\n")
 						return
 					}
 					
@@ -61,7 +73,7 @@ class CloudLayer {
 				self?.publicDB.save(object.getNewRecord(from: object.getRecordId())) { record, error in
 					
 					if let error = error {
-						print(error)
+						print("Got error:\n\(error)\n")
 						return
 					}
 					
@@ -73,18 +85,6 @@ class CloudLayer {
 			
 		}
 	}
-	
-//	private func save(_ idProvider: IdProvider) {
-//		self.createOrUpdate(idProvider)
-//	}
-	
-//	private func save(_ employee: Employee) {
-//		self.createOrUpdate(employee)
-//	}
-	
-//	private func save(_ role: Role) {
-//		self.createOrUpdate(role)
-//	}
 	
 	private func save(_ company: Company) {
 		for role in company.roles {
@@ -111,12 +111,13 @@ class CloudLayer {
 	
 	// MARK: - Loading
 	
-	private func load(_ typeName: String, with completed: @escaping ([CKRecord]?) -> Void) {
-		let query = CKQuery(recordType: typeName, predicate: NSPredicate(value: true))
+	private func load(_ typeName: String, with predicate: NSPredicate, and completed: @escaping ([CKRecord]?) -> Void) {
+		let query = CKQuery(recordType: typeName, predicate: predicate)
 		
 		self.publicDB.perform(query, inZoneWith: nil) { results, error in
 			if let error = error {
-				print(error)
+				print("Got error:\n\(error)\n")
+				completed(nil)
 				return
 			}
 			
@@ -125,16 +126,103 @@ class CloudLayer {
 		}
 	}
 	
+	private func load(with references: [CKReference], completed: @escaping ([CKRecord]?) -> Void) {
+		var recordIDs = [CKRecordID]()
+		
+		
+		for reference in references {
+			recordIDs.append(reference.recordID)
+		}
+		
+		let fetchAllRecords = CKFetchRecordsOperation(recordIDs: recordIDs)
+		fetchAllRecords.fetchRecordsCompletionBlock = { recordDic, error in
+			if let error = error {
+				print("Got error:\n\(error)\n")
+				completed(nil)
+				return
+			}
+			
+			if let recordDic = recordDic {
+				var records = [CKRecord]()
+				
+				for (_, value: recordEntry) in recordDic {
+					records.append(recordEntry)
+				}
+				
+				completed(records)
+			}
+		}
+		
+	}
+	
+	func load(_ references: [CKReference], with completed: @escaping (Set<Employee>?, Set<Role>?) -> Void) {
+		self.load(with: references) { records in
+			if let records = records {
+				
+				var employees = Set<Employee>()
+				var roles = Set<Role>()
+				
+				for record in records {
+					if record.recordType == Employee.typeName {
+						
+						if let employee = Employee(record) {
+							employees.insert(employee)
+						}
+						
+					} else if record.recordType == Role.typeName {
+						
+						if let role = Role(record) {
+							roles.insert(role)
+						}
+						
+					}
+				}
+				
+				completed(employees, roles)
+				
+			} else {
+				completed(nil, nil)
+			}
+		}
+	}
+	
 	func load(with completed: @escaping (IdProvider?, Set<Company>?) -> Void) {
-		self.load(IdProvider.typeName) { records in
+		
+		self.load(IdProvider.typeName, with: NSPredicate(value: true)) { [weak self] records in
+			
 			if let idProviderRecord = records?.first {
 				let idProvider = IdProvider(idProviderRecord)
 				
-				// TODO: here
+				self?.load(Company.typeName, with: NSPredicate(value: true)) { records in
+					
+					
+					if let companiesRecords = records {
+						var companies = Set<Company>()
+						
+						for companieRecord in companiesRecords {
+							
+							Company.loadCompany(companieRecord) { company in
+								if let company = company {
+									companies.insert(company)
+								}
+							}
+							
+						}
+						
+						completed(idProvider, companies)
+						
+						
+					} else {
+						
+						completed(idProvider, nil)
+						
+					}
+				}
 				
-				completed(idProvider, nil)
 			} else {
+				
 				completed(nil, nil)
+				
 			}
 		}
 	}

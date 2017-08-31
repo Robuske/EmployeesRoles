@@ -20,8 +20,6 @@ class DataLayer {
 	private let idProviderKey = "idProvider"
 	private let companiesKey = "companies"
 	
-	private var loaded = false
-	
 	private init() {}
 	
 	// MARK: - Saving
@@ -47,8 +45,7 @@ class DataLayer {
 			CloudLayer.instance.save(IdProvider.instance, and: companies)
 			
 		} catch {
-			print("Could not encode, got error:")
-			print(error)
+			print("Could not encode, got error:\n\(error)\n")
 			return false
 		}
 		
@@ -65,9 +62,6 @@ class DataLayer {
 	// MARK: - Loading
 	
 	private func loadCompanies() -> Set<Company> {
-		if !self.loaded {
-			self.firstLoad()
-		}
 		
 		let decoder = PropertyListDecoder()
 		
@@ -96,9 +90,6 @@ class DataLayer {
 	}
 	
 	func loadIdProvider() -> IdProvider? {
-		if !self.loaded {
-			self.firstLoad()
-		}
 		
 		let decoder = PropertyListDecoder()
 		
@@ -111,20 +102,21 @@ class DataLayer {
 		return idProvider
 	}
 	
-	private func firstLoad() {
+	func firstLoad() {
 		CloudLayer.instance.load { [weak self] idProvider, companies in
 			if let idProvider = idProvider {
 				IdProvider.reload(with: idProvider)
 				_ = try? self?.save(IdProvider.instance)
+				print("Loaded and saved IdProvider")
 				
 				if let companies = companies {
 					_ = self?.save(companies)
+					print("Loaded and saved companies")
 					
 					self?.delegate?.reloadData()
 				}
 			}
 		}
 		
-		self.loaded = true
 	}
 }
