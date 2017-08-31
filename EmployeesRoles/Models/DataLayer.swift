@@ -8,24 +8,41 @@
 
 import Foundation
 
+protocol DataLayerUpdate: class {
+	func reloadData()
+}
+
 class DataLayer {
 	static let instance = DataLayer()
+	
+	weak var delegate: DataLayerUpdate?
 	
 	private let idProviderKey = "idProvider"
 	private let companiesKey = "companies"
 	
+	private var loaded = false
+	
 	private init() {}
 	
-	func save(_ companies: Set<Company>) -> Bool {
+	// MARK: - Saving
+	private func save(_ idProvider: IdProvider) throws {
 		let encoder = PropertyListEncoder()
 		
+		let idProviderData = try encoder.encode(idProvider)
+		
+		UserDefaults.standard.set(idProviderData, forKey: self.idProviderKey)
+	}
+	
+	private func save(_ companies: Set<Company>) -> Bool {
+		
 		do {
+			try self.save(IdProvider.instance)
+			
+			let encoder = PropertyListEncoder()
 			
 			let companiesData = try encoder.encode(companies)
-			let idProviderData = try encoder.encode(IdProvider.instance)
 			
 			UserDefaults.standard.set(companiesData, forKey: self.companiesKey)
-			UserDefaults.standard.set(idProviderData, forKey: self.idProviderKey)
 			
 			CloudLayer.instance.save(IdProvider.instance, and: companies)
 			
@@ -45,7 +62,13 @@ class DataLayer {
 		return self.save(companies)
 	}
 	
-	func loadCompanies() -> Set<Company> {
+	// MARK: - Loading
+	
+	private func loadCompanies() -> Set<Company> {
+		if !self.loaded {
+			self.firstLoad()
+		}
+		
 		let decoder = PropertyListDecoder()
 		
 		guard let companiesData = UserDefaults.standard.object(forKey: self.companiesKey) as? Data,
@@ -73,6 +96,10 @@ class DataLayer {
 	}
 	
 	func loadIdProvider() -> IdProvider? {
+		if !self.loaded {
+			self.firstLoad()
+		}
+		
 		let decoder = PropertyListDecoder()
 		
 		guard let idProviderData = UserDefaults.standard.object(forKey: self.idProviderKey) as? Data,
@@ -82,5 +109,21 @@ class DataLayer {
 		}
 		
 		return idProvider
+	}
+	
+	private func firstLoad() {
+		CloudLayer.instance.load { idProvider, companies in
+			if let idProvider = idProvider {
+				IdProvider.reload(with: idProvider)
+				
+				if let companies = companies {
+					_ = self.save(companies)
+					
+					self.delegate?.reloadData()
+				}
+			}
+		}
+		
+		self.loaded = true
 	}
 }

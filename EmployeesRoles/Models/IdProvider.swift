@@ -18,8 +18,11 @@ class IdProvider: Codable {
 		
 		return IdProvider()
 	}()
+	static let typeName = "IdProvider"
 	
-	let typeName = "IdProvider"
+	var typeName: String {
+		return IdProvider.typeName
+	}
 	
 	private var nextCompanyId: UInt
 	private var nextEmployeeId: UInt
@@ -57,7 +60,7 @@ class IdProvider: Codable {
 	}
 }
 
-extension IdProvider: CloudKitProtocol {
+extension IdProvider: CloudLayerProtocol {
 	func getRecordId() -> CKRecordID {
 		return CKRecordID(recordName: self.typeName)
 	}
@@ -71,15 +74,22 @@ extension IdProvider: CloudKitProtocol {
 		return record
 	}
 	
-//	convenience init(record: CKRecord) {
-//
-//		guard let companyId = record["nextCompanyId"] as? Int,
-//			let employeeId = record["nextEmployeeId"] as? Int,
-//			let roleId = record["nextRoleId"] as? Int else {
-//			fatalError("Couldn't decode IdProvider record")
-//		}
-//
-//		self.init(nextCompanyId: UInt(companyId), nextEmployeeId: UInt(employeeId), nextRoleId: UInt(roleId))
-//	}
+	static func reload(with newObject: IdProvider) {
+		instance.nextCompanyId = newObject.nextCompanyId
+		instance.nextEmployeeId = newObject.nextEmployeeId
+		instance.nextRoleId = newObject.nextRoleId
+	}
+	
+	convenience init?(_ record: CKRecord) {
+
+		guard let companyId = record[IdProvider.CodingKeys.nextCompanyId.stringValue] as? UInt,
+			let employeeId = record[IdProvider.CodingKeys.nextEmployeeId.stringValue] as? UInt,
+			let roleId = record[IdProvider.CodingKeys.nextRoleId.stringValue] as? UInt else {
+				print("Couldn't decode IdProvider record")
+				return nil
+		}
+
+		self.init(nextCompanyId: companyId, nextEmployeeId: employeeId, nextRoleId: roleId)
+	}
 	
 }

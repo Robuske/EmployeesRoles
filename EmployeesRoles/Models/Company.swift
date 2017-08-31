@@ -56,7 +56,7 @@ struct Company: Codable, Equatable, Hashable {
 	
 }
 
-extension Company: CloudKitProtocol {
+extension Company: CloudLayerProtocol {
 	
 	func getRecordId() -> CKRecordID {
 		return CKRecordID(recordName: "\(self.typeName)\(self.companyId)")
@@ -85,12 +85,12 @@ extension Company: CloudKitProtocol {
 		return record
 	}
 	
-//	init(record: CKRecord) {
+//	init?(_ record: CKRecord) {
 //		let companyId = UInt(record.recordID.recordName.stripToInt())
 //		let name = record["name"]
 //		
 //		
-//		self.init(companyId: companyId, name: name, roles: , employees: )
+//		self.init(companyId: companyId, name: name, roles: roles, employees: employees)
 //	}
 	
 }

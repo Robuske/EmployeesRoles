@@ -47,7 +47,7 @@ struct Employee: Codable, Equatable, Hashable {
 	}
 }
 
-extension Employee: CloudKitProtocol {
+extension Employee: CloudLayerProtocol {
 	func getRecordId() -> CKRecordID {
 		return CKRecordID(recordName: "\(self.typeName)\(self.employeeId)")
 	}

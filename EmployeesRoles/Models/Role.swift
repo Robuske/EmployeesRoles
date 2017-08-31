@@ -32,7 +32,7 @@ struct Role: Codable, Equatable, Hashable {
 	}
 }
 
-extension Role: CloudKitProtocol {
+extension Role: CloudLayerProtocol {
 	func getRecordId() -> CKRecordID {
 		return CKRecordID(recordName: "\(self.typeName)\(self.roleId)")
 	}
@@ -49,5 +49,15 @@ extension Role: CloudKitProtocol {
 		let reference = CKReference(recordID: self.getRecordId(), action: .none)
 		
 		return reference
+	}
+	
+	init?(_ record: CKRecord) {
+		guard let name = record[Role.CodingKeys.name.stringValue] as? String,
+			let salary = record[Role.CodingKeys.salary.stringValue] as? UInt else {
+				print("Couldn't decode IdProvider record")
+				return nil
+		}
+		
+		self.init(name: name, salary: salary)
 	}
 }
