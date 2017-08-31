@@ -112,14 +112,15 @@ class DataLayer {
 	}
 	
 	private func firstLoad() {
-		CloudLayer.instance.load { idProvider, companies in
+		CloudLayer.instance.load { [weak self] idProvider, companies in
 			if let idProvider = idProvider {
 				IdProvider.reload(with: idProvider)
+				_ = try? self?.save(IdProvider.instance)
 				
 				if let companies = companies {
-					_ = self.save(companies)
+					_ = self?.save(companies)
 					
-					self.delegate?.reloadData()
+					self?.delegate?.reloadData()
 				}
 			}
 		}

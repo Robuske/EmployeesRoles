@@ -44,7 +44,7 @@ class CloudLayer {
 		self.publicDB.fetch(withRecordID: object.getRecordId()) { [weak self] record, error in
 			
 			if let existingRecord = record {
-				self!.publicDB.save(object.setRecordValues(for: existingRecord)) { record, error in
+				self?.publicDB.save(object.setRecordValues(for: existingRecord)) { record, error in
 					
 					if let error = error {
 						print(error)
@@ -56,7 +56,7 @@ class CloudLayer {
 				
 			} else {
 				
-				self!.publicDB.save(object.getNewRecord(from: object.getRecordId())) { record, error in
+				self?.publicDB.save(object.getNewRecord(from: object.getRecordId())) { record, error in
 					
 					if let error = error {
 						print(error)
