@@ -120,6 +120,7 @@ class CloudLayer {
 				return
 			}
 			
+			print("Loaded:\n\(results!)\n")
 			completed(results)
 		}
 	}
@@ -128,6 +129,8 @@ class CloudLayer {
 		self.load(IdProvider.typeName) { records in
 			if let idProviderRecord = records?.first {
 				let idProvider = IdProvider(idProviderRecord)
+				
+				// TODO: here
 				
 				completed(idProvider, nil)
 			} else {
