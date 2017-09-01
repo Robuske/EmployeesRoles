@@ -150,9 +150,11 @@ class CloudLayer {
 				}
 				
 				completed(records)
+			} else {
+				completed(nil)
 			}
 		}
-		
+		self.publicDB.add(fetchAllRecords)
 	}
 	
 	func load(_ references: [CKReference], with completed: @escaping (Set<Employee>?, Set<Role>?) -> Void) {
@@ -205,11 +207,15 @@ class CloudLayer {
 								if let company = company {
 									companies.insert(company)
 								}
+								
+								if companies.count == companiesRecords.count {
+									completed(idProvider, companies)
+								}
 							}
 							
 						}
 						
-						completed(idProvider, companies)
+						
 						
 						
 					} else {

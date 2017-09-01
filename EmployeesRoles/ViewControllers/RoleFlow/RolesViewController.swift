@@ -8,7 +8,7 @@
 
 import UIKit
 
-class RolesViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, ReloadMasterViewDelegate, RolesDataProtocol {
+class RolesViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, ReloadMasterViewDelegate, RolesDataProtocol, DataLayerUpdate {
 
 	var roles = [Role]()
 
@@ -18,6 +18,8 @@ class RolesViewController: UIViewController, UITableViewDataSource, UITableViewD
 	
 	override func viewDidLoad() {
         super.viewDidLoad()
+		
+		DataLayer.instance.insertAsDelegate(self)
 		
 		self.reloadData()
     }

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class EmployeesViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, ReloadMasterViewDelegate {
+class EmployeesViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, ReloadMasterViewDelegate, DataLayerUpdate {
 
 	private let employeeCellIdentifier = "employeeCell"
 	private var employees = [Employee]()
@@ -17,6 +17,8 @@ class EmployeesViewController: UIViewController, UITableViewDataSource, UITableV
 	
     override func viewDidLoad() {
         super.viewDidLoad()
+		
+		DataLayer.instance.insertAsDelegate(self)
 		
 		self.reloadData()
     }

@@ -9,13 +9,15 @@
 import Foundation
 
 protocol DataLayerUpdate: class {
+	var hashValue: Int { get }
+	
 	func reloadData()
 }
 
 class DataLayer {
 	static let instance = DataLayer()
 	
-	weak var delegate: DataLayerUpdate?
+	private var delegates = [DataLayerUpdate]()
 	
 	private let idProviderKey = "idProvider"
 	private let companiesKey = "companies"
@@ -29,6 +31,8 @@ class DataLayer {
 		let idProviderData = try encoder.encode(idProvider)
 		
 		UserDefaults.standard.set(idProviderData, forKey: self.idProviderKey)
+		
+		print("Saved idProvider on user defaults")
 	}
 	
 	private func save(_ companies: Set<Company>) -> Bool {
@@ -43,6 +47,8 @@ class DataLayer {
 			UserDefaults.standard.set(companiesData, forKey: self.companiesKey)
 			
 			CloudLayer.instance.save(IdProvider.instance, and: companies)
+			
+			print("Saved companies on user defaults")
 			
 		} catch {
 			print("Could not encode, got error:\n\(error)\n")
@@ -113,10 +119,21 @@ class DataLayer {
 					_ = self?.save(companies)
 					print("Loaded and saved companies")
 					
-					self?.delegate?.reloadData()
+					if let exists = self {
+						for delegate in exists.delegates {
+							delegate.reloadData()
+						}
+					}
+					
 				}
 			}
 		}
 		
+	}
+	
+	func insertAsDelegate(_ delegate: DataLayerUpdate) {
+		if !self.delegates.contains { $0.hashValue == delegate.hashValue } {
+			self.delegates.append(delegate)
+		}
 	}
 }

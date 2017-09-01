@@ -8,7 +8,7 @@
 
 import UIKit
 
-class RoleSelectorTableViewController: UITableViewController, RolesDataProtocol {
+class RoleSelectorTableViewController: UITableViewController, RolesDataProtocol, DataLayerUpdate {
 
 	var selectedRole: Role?
 	var roles = [Role]()
@@ -18,9 +18,15 @@ class RoleSelectorTableViewController: UITableViewController, RolesDataProtocol 
 	
     override func viewDidLoad() {
         super.viewDidLoad()
+		
+		DataLayer.instance.insertAsDelegate(self)
 
-		self.reloadData(in: self.tableView)
+		self.reloadData()
     }
+	
+	func reloadData() {
+		self.reloadData(in: self.tableView)
+	}
 
     // MARK: - Table view data source
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
